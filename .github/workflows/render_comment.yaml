@@ -1,0 +1,107 @@
+# Copyright 2024 Oregon State Flying Club
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This workflow renders the checklists from a PR into images and posts those
+# images on the PR as a comment.
+
+name: Render Comment
+on: pull_request
+permissions:
+  actions: write
+  #contents: write
+  #pull-requests: write
+
+jobs:
+  render_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore Cached Typst
+        id: restore-typst
+        uses: actions/cache/restore@v4
+        with:
+          # Note: `key` will never be an exact match, instead `restore-keys`
+          # will match a prefix of the cache.
+          key: typst-
+          path: ~/.cargo/bin/typst
+          restore-keys: typst-
+
+      # If there was a cache miss, build Typst.
+      - name: Build Typst
+        id: build-typst
+        # We can't use cache-hit to detect a cache hit, because cache/restore
+        # indicates a miss if only restore-keys matches. Instead, look to see if
+        # it output a matched key.
+        if: steps.restore-typst.outputs.cache-matched-key == ''
+        run: cargo install typst-cli
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Also, in the case of a cache miss, wake up and trigger the cache_typst
+      # workflow to prevent future cache misses. Note that we intentially do
+      # this after building Typst so that if `cargo install typst-cli` starts
+      # failing (e.g. due to a breaking change pushed to crates.io), this won't
+      # cause a wasted action run.
+      # This step is separate from the previous step so that we only expose the
+      # GitHub token to gh and not to cargo/typst.
+      - name: Restart Cache Workflow
+        if: steps.restore-typst.outputs.cache-matched-key == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow enable cache_typst.yaml
+          gh workflow run cache_typst.yaml
+
+      - name: Render and Push Checklists
+        id: render
+        run: |
+          echo PR ${{ github.event.number }} >> signature.typ
+          mkdir build
+          typst compile 73146.typ build/73146.pdf
+          typst compile 73146.typ build/73146_{n}.svg
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          # If we leave the workflow files intact, the push can sporadically
+          # fail with a "refusing to allow a GitHub App to create or update
+          # workflow" error. To avoid that, we delete the workflows.
+          git rm -r .github/workflows
+          git add build/
+          git commit -m "PR ${{ github.event.number }} generated checklists"
+          echo "hash=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          # Push the new commit to a ref that is neither a branch nor a tag,
+          # giving the following properties:
+          #   1. The commit will stick around (won't be garbage-collected)
+          #   2. It won't pollute the GitHub UI.
+          # If the PR is updated, this will overwrite the previously-pushed
+          # commits, so only the latest rendering is retained indefinitely.
+          git push -f origin HEAD:refs/rendered_prs/${{ github.event.number }}
+
+      # This is separate from the previous step so that GH_TOKEN is only exposed
+      # to gh.
+      # There isn't a way to tell gh "update the previous comment or create a
+      # new comment if none exists", so instead we first try to edit the
+      # previous comment then we post a new one if the edit fails.
+      - name: Create or Update Comment
+        env:
+          BODY: >
+            Generated PDFs:
+            [73146](https://github.com/${{github.repository}}/blob/${{steps.render.outputs.hash}}/build/73146.pdf)
+            <details><summary>73146</summary>
+            ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.render.outputs.hash}}/build/73146_1.svg)
+            ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.render.outputs.hash}}/build/73146_2.svg)
+            </details>
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment ${{ github.event.number }} -b "$BODY" --edit-last ||
+            gh pr comment ${{ github.event.number }} -b "$BODY"
