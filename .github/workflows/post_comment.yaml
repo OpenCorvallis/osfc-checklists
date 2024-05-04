@@ -1,0 +1,93 @@
+# Copyright 2024 Oregon State Flying Club
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This workflow posts the checklists rendered by the Render Checklists workflow,
+# and also restarts the Cache Typst workflow if there was a cache miss.
+
+name: Post Comment
+on:
+  workflow_run:
+    workflows: [Render Checklists]
+    types: [completed]
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  post_comment:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          name: rendered_pr
+          path: rendered_pr/
+          run-id: ${{ github.event.workflow_run.id }}
+
+      # We want to checkout a commit with the PR's contents so that anyone
+      # manually browsing through the pushed commit sees the correct source.
+      # However, there's no way to pass that into actions/checkout's `ref`
+      # argument, so instead we manually fetch and checkout later.
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: osfc-checklists
+
+      - name: Push Checklists
+        id: push
+        run: |
+          cd osfc-checklists/
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin "$(<../rendered_pr/git_ref)"
+          git checkout "$(<../rendered_pr/git_ref)"
+          cp -Pr --no-preserve=all ../rendered_pr/build/ .
+          git add build/
+          git commit -m "PR $(<../rendered_pr/pr_number) rendered"
+          echo "hash=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          # Push the new commit to a ref that is neither a branch nor a tag,
+          # giving the following properties:
+          #   1. The commit will stick around (won't be garbage-collected)
+          #   2. It won't pollute the GitHub UI.
+          # If the PR is updated, this will overwrite the previously-pushed
+          # commits, so only the latest rendering is retained indefinitely.
+          git push -f origin "HEAD:refs/rendered_prs/$(<../rendered_pr/pr_number)"
+
+      # This is separate from the previous step so that GH_TOKEN is only exposed
+      # to gh.
+      # There isn't a way to tell gh "update the previous comment or create a
+      # new comment if none exists", so instead we first try to edit the
+      # previous comment then we post a new one if the edit fails.
+      # If there was a cache miss, this also wakes up the Cache Typst workflow.
+      - name: Create or Update Comment
+        env:
+          BODY: >
+            Generated PDFs:
+            [73146](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73146.pdf)
+            <details><summary>73146</summary>
+            ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_1.svg)
+            ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_2.svg)
+            </details>
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd osfc-checklists
+          gh pr comment "$(<../rendered_pr/pr_number)" -b "$BODY" --edit-last ||
+            gh pr comment "$(<../rendered_pr/pr_number)" -b "$BODY"
+          if [ -f ../rendered_pr/cache_miss ]; then
+            gh workflow enable cache_typst.yaml
+            gh workflow run cache_typst.yaml
+          fi
