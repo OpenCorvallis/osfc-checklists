@@ -17,6 +17,8 @@
 // formatting details in one place in the file, making it easier to perform
 // formatting revisions.
 
+#import "common.typ": checklist, checklist_group
+
 // -----------------------------------------------------------------------------
 // Ground Checklists and Information page
 // -----------------------------------------------------------------------------
@@ -27,6 +29,34 @@
 // Operating Checklists
 // -----------------------------------------------------------------------------
 #let operating_checklists = [
+	#checklist("Start", black,
+		checklist_group("Before Start"),
+		([Preflight inspection], [COMPLETE]),
+		([Passenger briefing], [COMPLETE]),
+		([Brakes], [TEST and SET]),
+		([Seats, belts, harnesses], [SECURE]),
+		([Fuel valve], [BOTH]),
+		([Radios, electrical equipment], [OFF]),
+		([Circuit breakers], [CHECK IN]),
+		([Beacon switch], [ON]),
+		checklist_group("Engine Start"),
+		([Mixture], [RICH]),
+		([Carburetor heat], [COLD]),
+		([Prime], [AS REQUIRED]),
+		([Throttle], [OPEN 1/8 INCH]),
+		([Master], [ON]),
+		([Propeller area], [CLEAR]),
+		([Ignition switch], [START], [Release when engine starts]),
+		([Oil pressure], [CHECK], [If no pressure in 30 seconds, shutdown]),
+		([Mixture], [GROUND LEAN]),
+		checklist_group("Before Taxi"),
+		([Headset], [ON]),
+		([Flaps], [RETRACT]),
+		([Weather], [OBTAIN]),
+		([Altimeter], [SET]),
+		([EFB Setup], [AS DESIRED]),
+		([Navigation, landing lights], [ON]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
