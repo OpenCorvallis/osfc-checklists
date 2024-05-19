@@ -66,6 +66,23 @@
 		([EFB Setup], [AS DESIRED]),
 		([Navigation, landing lights], [ON]),
 	)
+	#checklist("Run-up", black,
+		([Instruments], [CHECK and SET]),
+		([VOR Check], [IF NEEDED]),
+		([Brakes], [SET]),
+		([Doors and windows], [CLOSED, LOCKED]),
+		([Flight controls], [FREE and CORRECT]),
+		([Fuel valve], [BOTH]),
+		([Mixture], [RICH], [Below 3000 feet]),
+		([Throttle], [1700 RPM]),
+		([Magnetos], [CHECK], [Max drop 125 RPM, max diff. 50 RPM]),
+		([Engine gauges, ammeter], [CHECK]),
+		([Vacuum gauge], [CHECK]),
+		([Carburetor heat], [TEST]),
+		([Idle], [TEST]),
+		([Mixture], [GROUND LEAN]),
+		([Throttle friction], [ADJUST]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
