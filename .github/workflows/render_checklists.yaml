@@ -19,9 +19,6 @@
 name: Render Checklists
 on:
   pull_request:
-  push:
-    branches:
-      - main
 permissions: {}
 
 jobs:
