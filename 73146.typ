@@ -59,6 +59,7 @@
 		([Oil pressure], [CHECK], [If no pressure in 30 seconds, shutdown]),
 		([Mixture], [GROUND LEAN]),
 		checklist_group("Before Taxi"),
+		([Avionics], [ON]),
 		([Headset], [ON]),
 		([Flaps], [RETRACT]),
 		([Weather], [OBTAIN]),
