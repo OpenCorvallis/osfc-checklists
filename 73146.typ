@@ -23,6 +23,49 @@
 // Ground Checklists and Information page
 // -----------------------------------------------------------------------------
 #let ground_checklists_and_info = [
+	#checklist("Preflight", black,
+		checklist_group("Fluids"),
+		([Magnetos], [OFF]),
+		([Fuel quantity], [CHECK VISUALLY]),
+		([Fuel sumps], [DRAIN],
+		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
+		([Fuel filler caps], [SECURE]),
+		([Engine oil level], [CHECK], [Minimum 6 quarts]),
+		checklist_group("Cabin"),
+		([Pitot cover], [REMOVE]),
+		([POH], [VERIFY PRESENT]),
+		([Master], [ON]),
+		([Flaps], [EXTEND]),
+		([Fuel gauges], [CHECK QUANTITY]),
+		([Lights], [CHECK]),
+		([Tach time], [RECORD]),
+		([Pitot heat], [TEST]),
+		([Master], [OFF]),
+		([Control lock], [REMOVE]),
+		checklist_group("Empennage"),
+		([Rudder gust lock], [REMOVE]),
+		([Control surfaces], [CHECK], [Freedom of movement and security]),
+		checklist_group("Right"),
+		([Main wheel tire], [CHECK INFLATION]),
+		([Aileron], [CHECK], [Freedom of movement and security]),
+		checklist_group("Nose"),
+		([Propeller, spinner], [CHECK], [For nicks and security]),
+		([Landing light], [CHECK CLEAR]),
+		([Air filter], [CHECK CLEAR]),
+		([Nosewheel & strut], [CHECK INFLATED]),
+		([Static source], [CHECK CLEAR]),
+		checklist_group("Left"),
+		([Main wheel tire], [CHECK INFLATION]),
+		([Fuel tank vent], [CHECK CLEAR]),
+		([Pitot tube], [CHECK CLEAR]),
+		([Stall warning], [TEST]),
+		([Aileron], [CHECK], [Freedom of movement and security]),
+		checklist_group("Final"),
+		([FlightCircle], [DISPATCH]),
+		([Baggage door], [LOCK]),
+		([Chocks], [REMOVE]),
+		([Tie-downs], [REMOVE]),
+	)
 	#checklist("Securing", black,
 		([Control lock], [INSTALL]),
 		([Tie-downs, chocks], [APPLY]),
@@ -110,7 +153,7 @@
 	#columns(2, gutter: 2*margins)[
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(10pt)
+			#set text(9.6pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
