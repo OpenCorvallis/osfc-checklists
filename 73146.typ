@@ -133,6 +133,13 @@
 // Emergency Checklists (left side)
 // -----------------------------------------------------------------------------
 #let left_emergency_checklists = [
+	#checklist("Engine Failure During Takeoff Run", black, emergency: true,
+		([Throttle], [IDLE]),
+		([Brakes], [APPLY]),
+		([Flaps], [RETRACT]),
+		([Mixture], [CUT-OFF]),
+		([Magnetos], [OFF]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
