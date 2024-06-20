@@ -127,6 +127,18 @@
 		([Mixture], [GROUND LEAN]),
 		([Throttle friction], [ADJUST]),
 	)
+	#checklist("Before Takeoff", black,
+		([Radios], [SET]),
+		([Instruments], [SET]),
+		([Takeoff briefing], [COMPLETE]),
+		([Beacon, navigation, landing lights], [ON]),
+		([Carburetor heat], [AS REQUIRED]),
+		([Flaps], [UP]),
+		([Trim], [TAKEOFF]),
+		([Fuel valve], [BOTH]),
+		([Fuel quantity], [CHECK]),
+		([Mixture], [RICH], [Below 3000 feet]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
