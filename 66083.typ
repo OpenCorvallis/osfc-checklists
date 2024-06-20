@@ -1,11 +1,11 @@
 // Copyright 2024 Oregon State Flying Club
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,6 +13,8 @@
 // limitations under the License.
 
 // 73146.typ is more extensively commented, check there first for design notes.
+
+#import "common.typ": checklist, checklist_group
 
 // -----------------------------------------------------------------------------
 // Ground Checklists and Information page
@@ -47,7 +49,7 @@
 	#columns(2, gutter: 2*margins)[
 		= Ground Checklists and Information #h(1fr) N66083
 		#columns(2)[
-			#set text(9pt)
+			#set text(6pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
@@ -66,7 +68,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(9pt)
+			#set text(6pt)
 			#left_emergency_checklists
 		]
 		#colbreak()
@@ -74,7 +76,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(9pt)
+			#set text(6pt)
 			#right_emergency_checklists
 		]
 	]
