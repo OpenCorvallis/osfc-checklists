@@ -133,7 +133,7 @@
 		([Takeoff briefing], [COMPLETE]),
 		([Beacon, navigation, landing lights], [ON]),
 		([Carburetor heat], [AS REQUIRED]),
-		([Flaps], [UP]),
+		([Flaps], [0-10°]),
 		([Trim], [TAKEOFF]),
 		([Fuel valve], [BOTH]),
 		([Fuel quantity], [CHECK]),
