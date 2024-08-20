@@ -152,6 +152,59 @@
 		([Mixture], [CUT-OFF]),
 		([Magnetos], [OFF]),
 	)
+	// The title in the POH is "ENGINE FAILURE IMMEDIATELY AFTER TAKEOFF" but
+	// that didn't fit on one line so immediately was replaced with shortly.
+	#checklist("Engine Failure Shortly After Takeoff", black, emergency: true,
+		([Airspeed], align(right)[Flaps up: 65 KIAS\ Flaps down: 60 KIAS]),
+		([Mixture], [CUT-OFF]),
+		([Fuel valve], [OFF]),
+		([Magnetos], [OFF]),
+		([Flaps], [AS REQUIRED]),
+		([Master], [OFF]),
+	)
+	// POH title: EMERGENCY LANDING WITHOUT ENGINE POWER, emergency replaced
+	// with forced to fit on one line.
+	#checklist("Forced Landing Without Engine Power", black, emergency: true,
+		([Airspeed], align(right)[Flaps up: 65 KIAS\ Flaps down: 60 KIAS]),
+		([Mixture], [CUT-OFF]),
+		([Fuel valve], [OFF]),
+		([Magnetos], [OFF]),
+		([Flaps], [AS REQUIRED], [40° recommended]),
+		([Master], [OFF]),
+		([Doors], [UNLATCH BEFORE TOUCHDOWN]), // "prior to" -> "before" for space
+		([Touchdown], [SLIGHTLY TAIL LOW]),
+		([Brakes], [APPLY HEAVILY]),
+	)
+	// POH title: PRECAUTIONARY LANDING WITH ENGINE POWER. Removed "with engine
+	// power" to fit on one line.
+	#checklist("Precautionary Landing", black, emergency: true,
+		([Flaps], [20°]),
+		([Airspeed], [60 KIAS]),
+		([Selected field], [FLY OVER], [Note terrain/obstructions.
+		 Retract flaps\ upon reaching a safe altitude and airspeed.]),
+		([Radios, electrical switches], [OFF]),
+		([Flaps], [40° (on final approach)]),
+		([Airspeed], [60 KIAS]),
+		([Master], [OFF]),
+		([Doors], [UNLATCH BEFORE TOUCHDOWN]), // "prior to" -> "before" for space
+		([Touchdown], [SLIGHTLY TAIL LOW]),
+		([Magnetos], [OFF]),
+		([Brakes], [APPLY HEAVILY]),
+	)
+	#checklist("Ditching", black, emergency: true,
+		([Radio], [MAYDAY on 121.5 MHz], [Give location, intentions]),
+		([Heavy objects], [SECURE or JETTISON]),
+		([Flaps], [20°-40°]),
+		([Power], [300 FT/MIN DESCENT AT 55 KIAS],
+		 [If no power available, approach flaps up 65 KIAS or flaps 10° 60 KIAS]),
+		([Strong wind, heavy seas:\ #h(1em)LAND INTO WIND\
+		  Light wind, heavy swells:\ #h(1em)LAND PARALLEL TO SWELLS], []),
+		([Doors], [UNLATCH]),
+		([Touchdown], [LEVEL ATTITUDE], [at established rate of descent]),
+		([Face], [CUSHION at touchdown with coat]),
+		([Airplane], [EVACUATE]),
+		([Life vests/raft], [INFLATE]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
