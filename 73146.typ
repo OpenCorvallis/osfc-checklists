@@ -41,6 +41,7 @@
 		([Tach time], [RECORD]),
 		([Pitot heat], [TEST]),
 		([Master], [OFF]),
+		([Fire extinguisher], [SECURE]),
 		([Control lock], [REMOVE]),
 		checklist_group("Empennage"),
 		([Rudder gust lock], [REMOVE]),
@@ -226,7 +227,7 @@
 	#columns(2, gutter: 2*margins)[
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(9.6pt)
+			#set text(9.4pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
