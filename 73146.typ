@@ -163,6 +163,14 @@
 		([Flaps], [AS REQUIRED]),
 		([Master], [OFF]),
 	)
+	#checklist("Engine Failure During Flight", black, emergency: true,
+		([Airspeed], [65 KIAS]),
+		([Carburetor heat], [ON]),
+		([Fuel valve], [BOTH]),
+		([Mixture], [RICH]),
+		([Magnetos], [BOTH (or START if prop stopped)]),
+		([Primer], [IN and LOCKED]),
+	)
 	// POH title: EMERGENCY LANDING WITHOUT ENGINE POWER, emergency replaced
 	// with forced to fit on one line.
 	#checklist("Forced Landing Without Engine Power", black, emergency: true,
@@ -206,12 +214,109 @@
 		([Airplane], [EVACUATE]),
 		([Life vests/raft], [INFLATE]),
 	)
+	#checklist("Engine Fire During Start On Ground", black, emergency: true,
+		([Cranking], [CONTINUE]),
+		([If engine starts:], []),
+		([#h(1em)Power], [1700 RPM for a few minutes]),
+		([#h(1em)Engine], [SHUTDOWN]),
+		([If engine fails to start:], []),
+		([#h(1em)Throttle], [FULL OPEN]),
+		([#h(1em)Mixture], [CUT-OFF]),
+		([#h(1em)Cranking], [CONTINUE for 2-3 minutes]),
+		([#h(1em)Fire extinguisher], [OBTAIN]),
+		([#h(1em)Master], [OFF]),
+		([#h(1em)Magnetos], [OFF]),
+		([#h(1em)Fuel valve], [OFF]),
+		([#h(1em)Fire], [EXTINGUISH],
+		 [Using fire extinguisher, seat cushion, wool blanket, or dirt.
+		  If practical try to remove air filter if it is ablaze.)]),
+		([Both cases: inspect and repair damage before conducting another flight.], []),
+	)
+	#checklist("Engine Fire in Flight", black, emergency: true,
+		([Mixture], [CUT-OFF]),
+		([Fuel valve], [OFF]),
+		([Master], [OFF]),
+		([Cabin heat & air], [OFF], [(except overhead vents)]),
+		([Airspeed], [100 KIAS],
+		 [If fire is not extinguished, increase glide speed to find an airspeed
+		  which will provide an incombustible mixture]),
+		([Forced Landing Without Engine Power checklist], [EXECUTE]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
 // Emergency Checklists (right side)
 // -----------------------------------------------------------------------------
 #let right_emergency_checklists = [
+	#checklist("Electrical Fire in Flight", black, emergency: true,
+		([Master], [OFF]),
+		([All other switches (except magnetos)], [OFF]),
+		([Vents/cabin air/heat], [CLOSE]),
+		([Fire extinguisher], [USE]),
+		([If fire appears out and electrical power necessary to continue flight:], []),
+		([#h(1em)Master], [ON]),
+		([#h(1em)Circuit breakers], [CHECK], [(do not reset faulty circuit)]),
+		([#h(1em)Radio/electrical switches], [ON],
+		 [One at a time with delay after each until short circuit is
+		  localized]),
+		([#h(1em)Vents/cabin air/heat], [OPEN],
+		 [(when fire is completely extinguished)]),
+	)
+	#checklist("Cabin Fire", black, emergency: true,
+		([Master], [OFF]),
+		([Vents/cabin air/heat], [CLOSED], [(to avoid drafts)]),
+		([Fire extinguisher], [USE],
+		 [WARNING: After discharging extinguisher within a closed cabin,
+		  ventilate cabin]),
+		([Land ASAP, inspect for damage], []),
+	)
+	#checklist("Wing Fire", black, emergency: true,
+		([Nav lights], [OFF]),
+		([Pitot heat], [OFF]),
+		([NOTE: Sideslip to keep flames away from fuel tanks and cabin.
+		  Land ASAP using flaps only as required.], []),
+	)
+	#checklist("Inadventent Icing Encounter", black, emergency: true,
+		([Pitot heat], [ON]),
+		([Turn back or change altitude to obtain an OAT less conducive to icing.], []),
+		([Cabin heat], [FULL ON]),
+		([Defroster], [OPEN]),
+		([Cabin air], [ADJUST], [Maximize defroster heat and airflow]),
+		([Throttle], [OPEN]),
+		([Carburetor and air filter icing], [MONITOR],
+			[Apply carb heat as required, lean mixture for maximum RPM if used continuously]),
+		([Land], [NEAREST AIRPORT], [With very rapid ice build-up, select suitable
+			off-airport landing site]),
+		([With ≥ 1/4 inch ice on the leading edges, prepare for significantly higher
+		  stall speed], []),
+		([Flaps], [LEAVE RETRACTED]),
+		([Open left window and scrape ice from windshield, if necessary for visibility], []),
+		([Forward slip if necessary for visibility], []),
+		([Approach speed], [65-75 KIAS], [Depending on level of accumulation]),
+		([Landing], [Perform in level attitude]),
+	)
+	// POH title: STATIC SOURCE BLOCKAGE (Erroneous Instrument Reading
+	// Suspected). Removed "(Erroneous Instrument Reading Suspected)" to fit on
+	// one line.
+	#checklist("Static Source Blockage", black, emergency: true,
+		([Alternate static source valve], [PULL ON]),
+		([Airspeed], [Use calibration table\ in POH section 5]),
+	)
+	#checklist("Landing With a Flat Main Tire", black, emergency: true,
+		([Approach], [NORMAL]),
+		([Touchdown], [GOOD TIRE FIRST], [Hold airplane off flat tire as long as possible]),
+	)
+	#checklist("Over-Voltage Light Illuminates", black, emergency: true,
+		([Master], [OFF (both sides)]),
+		([Master], [ON]),
+		([If over-voltage light illuminates again:], []),
+		([#h(1em)Flight], [TERMINATE ASAP]),
+	)
+	#checklist("Ammeter Shows Discharge", black, emergency: true,
+		([Alternator], [OFF]),
+		([Nonessential electrical equipment], [OFF]),
+		([Flight], [TERMINATE as soon as practical]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
