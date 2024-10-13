@@ -140,6 +140,52 @@
 		([Fuel quantity], [CHECK]),
 		([Mixture], [RICH], [Below 3000 feet]),
 	)
+	#checklist("Climb", black,
+		([Airspeed], [70-90 KIAS]),
+		([Throttle], [FULL]),
+		([Mixture], [RICH], [May lean above 3000 feet]),
+	)
+	#checklist("Cruise", black,
+		([Power], [2200-2700 RPM], [No more than 75%]),
+		([Trim], [ADJUST]),
+		([Mixture], [LEAN]),
+	)
+	#checklist("Descent", black,
+		([Mixture], [RICH]),
+		([Power], [AS DESIRED]),
+		([Carburetor heat], [AS REQUIRED], [To prevent carburetor icing]),
+	)
+	#checklist("Before Landing", black,
+		([Fuel valve], [BOTH]),
+		([Mixture], [RICH]),
+		([Carburetor heat], [ON], [Apply full heat before closing throttle]),
+		([Airspeed], [60-70 KIAS (flaps UP)]),
+		([Flaps], [AS DESIRED]),
+		([Airspeed], [55-65 KIAS (flaps DOWN)]),
+	)
+	#checklist("Balked Landing", black,
+		([Throttle], [FULL]),
+		([Carburetor heat], [COLD]),
+		([Flaps], [20°]),
+		([Airspeed], [55 KIAS]),
+		([Flaps], [RETRACT slowly]),
+	)
+	#checklist("After Landing", black,
+		([Flaps], [UP]),
+		([Caburetor heat], [OFF]),
+		([Mixture], [GROUND LEAN]),
+	)
+	// POH Title: SECURING AIRPLANE. I split the checklist into two: the
+	// Shutdown checklist here and the Securing checklist on the ground
+	// checklist page.
+	#checklist("Shutdown", black,
+		([Brakes], [SET]),
+		([Tach time], [RECORD]),
+		([Radios, electrical equipment], [OFF]),
+		([Mixture], [CUT-OFF]),
+		([Magnetos], [OFF]),
+		([Master], [OFF]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
@@ -340,7 +386,7 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N73146
 		#columns(2)[
-			#set text(9pt)
+			#set text(7.7pt)
 			#operating_checklists
 		]
 	]
