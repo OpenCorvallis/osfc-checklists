@@ -55,17 +55,23 @@ jobs:
 
       # This renders the checklist, and also stashes the git ref and PR number
       # in the artifact so the Post Comment workflows can retrieve them.
+      # TODO: Font pathing is kinda hacky, improve if we want to use this font.
       - name: Render Checklists
         run: |
+          mkdir fonts/
+          wget -O fonts/Tinos-Regular.ttf 'https://fonts.gstatic.com/s/tinos/v24/buE4poGnedXvwgX8dGVh8TI-.ttf'
+          wget -O fonts/Tinos-Italic.ttf 'https://fonts.gstatic.com/s/tinos/v24/buE2poGnedXvwjX-fmFD9CI-4NU.ttf'
+          wget -O fonts/Tinos-Bold.ttf 'https://fonts.gstatic.com/s/tinos/v24/buE1poGnedXvwj1AW0Fp2i43-cxL.ttf'
+          wget -O fonts/Tinos-BoldItalic.ttf 'https://fonts.gstatic.com/s/tinos/v24/buEzpoGnedXvwjX-Rt1s0CoV_NxLeiw.ttf'
           mkdir -p rendered_pr/build
           echo ${{ github.event.number }} > rendered_pr/pr_number
           echo PR ${{ github.event.number }} > osfc-checklists/signature.typ
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083.pdf
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083_{n}.svg
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe.pdf
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe_{n}.svg
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146.pdf
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/66083.typ rendered_pr/build/66083.pdf
+          typst compile --font-path=fonts/ osfc-checklists/66083.typ rendered_pr/build/66083_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/72pe.typ rendered_pr/build/72pe.pdf
+          typst compile --font-path=fonts/ osfc-checklists/72pe.typ rendered_pr/build/72pe_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/73146.typ rendered_pr/build/73146.pdf
+          typst compile --font-path=fonts/ osfc-checklists/73146.typ rendered_pr/build/73146_{n}.svg
           cd osfc-checklists
           git rev-parse HEAD > ../rendered_pr/git_ref
 
