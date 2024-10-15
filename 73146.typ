@@ -323,6 +323,8 @@
 // Page definitions and formatting
 // -----------------------------------------------------------------------------
 
+#set text(font: "Liberation Serif")
+
 // This is set to the minimum margin size that Ryan V's printer can support
 // (experimentally-determined).
 #let margins = 6mm
@@ -359,7 +361,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(9pt)
+			#set text(9.9pt)
 			#right_emergency_checklists
 		]
 	]
