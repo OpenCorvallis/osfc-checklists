@@ -55,17 +55,33 @@ jobs:
 
       # This renders the checklist, and also stashes the git ref and PR number
       # in the artifact so the Post Comment workflows can retrieve them.
+      # TODO: Fix hacky font install.
       - name: Render Checklists
         run: |
+          mkdir fonts/
+          wget -O 'fonts/IBMPlexSerif-Thin.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizBREVNn1dOx-zrZ2X3pZvkTi182zIZj1bIkNo.ttf'
+          wget -O 'fonts/IBMPlexSerif-ThinItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizHREVNn1dOx-zrZ2X3pZvkTiUa41YTi3TNgNq55w.ttf'
+          wget -O 'fonts/IBMPlexSerif-ExtraLight.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizAREVNn1dOx-zrZ2X3pZvkTi3Q-hIzoVrBicOg.ttf'
+          wget -O 'fonts/IBMPlexSerif-ExtraLightItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizGREVNn1dOx-zrZ2X3pZvkTiUa4_oyq17jjNOg_oc.ttf'
+          wget -O 'fonts/IBMPlexSerif-Light.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizAREVNn1dOx-zrZ2X3pZvkTi20-RIzoVrBicOg.ttf'
+          wget -O 'fonts/IBMPlexSerif-LightItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizGREVNn1dOx-zrZ2X3pZvkTiUa454xq17jjNOg_oc.ttf'
+          wget -O 'fonts/IBMPlexSerif-Regular.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizDREVNn1dOx-zrZ2X3pZvkThUY0TY7ikbI.ttf'
+          wget -O 'fonts/IBMPlexSerif-Italic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizBREVNn1dOx-zrZ2X3pZvkTiUa2zIZj1bIkNo.ttf'
+          wget -O 'fonts/IBMPlexSerif-Medium.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizAREVNn1dOx-zrZ2X3pZvkTi3s-BIzoVrBicOg.ttf'
+          wget -O 'fonts/IBMPlexSerif-MediumItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizGREVNn1dOx-zrZ2X3pZvkTiUa48Ywq17jjNOg_oc.ttf'
+          wget -O 'fonts/IBMPlexSerif-SemiBold.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizAREVNn1dOx-zrZ2X3pZvkTi3A_xIzoVrBicOg.ttf'
+          wget -O 'fonts/IBMPlexSerif-SemiBoldItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizGREVNn1dOx-zrZ2X3pZvkTiUa4-o3q17jjNOg_oc.ttf'
+          wget -O 'fonts/IBMPlexSerif-Bold.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizAREVNn1dOx-zrZ2X3pZvkTi2k_hIzoVrBicOg.ttf'
+          wget -O 'fonts/IBMPlexSerif-BoldItalic.ttf' 'https://fonts.gstatic.com/s/ibmplexserif/v19/jizGREVNn1dOx-zrZ2X3pZvkTiUa4442q17jjNOg_oc.ttf'
           mkdir -p rendered_pr/build
           echo ${{ github.event.number }} > rendered_pr/pr_number
           echo PR ${{ github.event.number }} > osfc-checklists/signature.typ
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083.pdf
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083_{n}.svg
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe.pdf
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe_{n}.svg
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146.pdf
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/66083.typ rendered_pr/build/66083.pdf
+          typst compile --font-path=fonts/ osfc-checklists/66083.typ rendered_pr/build/66083_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/72pe.typ rendered_pr/build/72pe.pdf
+          typst compile --font-path=fonts/ osfc-checklists/72pe.typ rendered_pr/build/72pe_{n}.svg
+          typst compile --font-path=fonts/ osfc-checklists/73146.typ rendered_pr/build/73146.pdf
+          typst compile --font-path=fonts/ osfc-checklists/73146.typ rendered_pr/build/73146_{n}.svg
           cd osfc-checklists
           git rev-parse HEAD > ../rendered_pr/git_ref
 
