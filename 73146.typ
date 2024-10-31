@@ -323,6 +323,8 @@
 // Page definitions and formatting
 // -----------------------------------------------------------------------------
 
+#set text(font: "DejaVu Serif")
+
 // This is set to the minimum margin size that Ryan V's printer can support
 // (experimentally-determined).
 #let margins = 6mm
@@ -330,9 +332,10 @@
 	// page() supports multiple columns, but does not support setting the gutter
 	// width for multiple columns, so we call columns() ourselves instead.
 	#columns(2, gutter: 2*margins)[
+		#set text(10pt)
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(9.4pt)
+			#set text(8.5pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
@@ -351,7 +354,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(9pt)
+			#set text(7.9pt)
 			#left_emergency_checklists
 		]
 		#colbreak()
@@ -359,7 +362,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(9pt)
+			#set text(8.5pt)
 			#right_emergency_checklists
 		]
 	]
