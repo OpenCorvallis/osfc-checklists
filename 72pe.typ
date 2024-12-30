@@ -44,9 +44,12 @@
 // Page definitions and formatting
 // -----------------------------------------------------------------------------
 
-#let margins = 6mm
+#set text(fallback: false, font: "DejaVu Sans")
+
+#let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	#columns(2, gutter: 2*margins)[
+		#set text(10pt)
 		= Ground Checklists and Information #h(1fr) N72PE
 		#columns(2)[
 			#set text(9pt)
