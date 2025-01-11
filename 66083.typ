@@ -336,10 +336,13 @@
 // Page definitions and formatting
 // -----------------------------------------------------------------------------
 
+#set text(fallback: false, font: "DejaVu Sans")
+
 // TODO: Adjust margins on other checklists as well.
 #let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	#columns(2, gutter: 2*margins)[
+		#set text(10pt)
 		= Ground Checklists and Information #h(1fr) N66083
 		#columns(2)[
 			#set text(6pt)
@@ -361,7 +364,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(3, gutter: 2mm)[
-			#set text(6.8pt)
+			#set text(6pt)
 			#left_emergency_checklists
 		]
 		#colbreak()
@@ -369,7 +372,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
 		#columns(3, gutter: 2mm)[
-			#set text(6.8pt)
+			#set text(6pt)
 			#right_emergency_checklists
 		]
 	]
