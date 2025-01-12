@@ -26,6 +26,50 @@
 // Operating Checklists
 // -----------------------------------------------------------------------------
 #let operating_checklists = [
+	#checklist("Start", black,
+		checklist_group("Before Start"),
+		([Preflight inspection], [COMPLETE]),
+		([Passenger briefing], [COMPLETE]),
+		([Brakes], [TEST, SET]),
+		([Seats, belts, harnesses], [SECURE]),
+		([Circuit breakers], [CHECK IN]),
+		([Electrical equipment], [OFF]),
+		([Avionics (BUS 1 and BUS 2)], [OFF]),
+		([Beacon switch], [ON]),
+		([Fuel selector], [BOTH]),
+		([Fuel shutoff valve], [ON]),
+		checklist_group("Engine Start (With Battery)"),
+		([Throttle], [OPEN 1/4 INCH]),
+		([Mixture], [CUT-OFF]),
+		([Standby battery], [TEST], [Hold TEST position 20 seconds, verify TEST
+			light stays on]),
+		([Standby battery], [ARM], [Verify PFD turns on]),
+		([Engine instruments], [CHECK], [Verify no red X on engine page]),
+		([BUS E Volts], [VERIFY ≥ 24V]),
+		([M BUS Volts], [VERIFY ≤ 1.5V]),
+		([BATT S Amps], [VERIFY negative]),
+		([STBY BATT Annunciator], [VERIFY SHOWN]),
+		([Master], [ON]),
+		([Prime], [IF ENGINE NOT WARM], [Fuel pump ON, mixture RICH until fuel
+			flow stable (3-5 seconds), mixture CUT-OFF, fuel pump OFF]),
+		([Propeller area], [CLEAR]),
+		([Ignition switch], [START], [Release when engine starts]),
+		([Mixture], [ADVANCE when engine starts], [If engine flooded, mixture
+			CUT-OFF, open throttle 1/2 to full, engage starter. When engine
+			starts, mixture FULL, retard throttle promptly]),
+		([Oil pressure], [VERIFY GREEN WITHIN 60 SECONDS]),
+		([Mixture], [GROUND LEAN]),
+		checklist_group("Before Taxi"),
+		([Amps (M BATT, BATT S)], [VERIFY POSITIVE]),
+		([LOW VOLTS Annunciator], [VERIFY NOT SHOWN]),
+		([Avionics], [ON]),
+		([Headset], [ON]),
+		([Navigation, strobe, taxi lights], [ON]),
+		([Flaps], [RETRACT]),
+		([Weather], [OBTAIN]),
+		([Altimeters (PFD, standby, autopilot)], [SET]),
+		([EFB Setup], [IF DESIRED]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
@@ -353,7 +397,7 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N66083
 		#columns(2)[
-			#set text(9pt)
+			#set text(8.2pt)
 			#operating_checklists
 		]
 	]
