@@ -62,7 +62,8 @@
 		([Stall warning], [TEST]),
 		([Aileron], [CHECK], [Freedom of movement and security]),
 		checklist_group("Final"),
-		([FlightCircle], [DISPATCH]),
+		([Flight Circle], [DISPATCH]),
+		([Tach, Hobbs times], [RECORD]),
 		([Baggage door], [LOCK]),
 		([Chocks], [REMOVE]),
 		([Tie-downs], [REMOVE]),
@@ -73,7 +74,7 @@
 		([Vents, windows], [CLOSE]),
 		([Pitot cover], [APPLY]),
 		([Tach, Hobbs times], [RECORD]),
-		([FlightCircle], [CHECK IN]),
+		([Flight Circle], [CHECK IN]),
 		([Doors], [LOCK]),
 	)
 ]
@@ -381,7 +382,7 @@
 		#set text(10pt)
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(8.7pt)
+			#set text(8.5pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
