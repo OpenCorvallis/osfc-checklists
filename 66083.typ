@@ -85,9 +85,9 @@
 		([Flap], [CHECK SECURE, CONDITION]),
 		checklist_group("Final"),
 		([Weight and balance], [CHECKED]),
-		([Baggage door], [LOCK]),
+		([Flight Circle], [DISPATCH]),
 		([Tach, Hobbs times], [RECORD]),
-		([FlightCircle], [DISPATCH]),
+		([Baggage door], [LOCK]),
 		([Chocks], [REMOVE]),
 		([Tie-downs], [REMOVE]),
 	)
@@ -98,7 +98,7 @@
 		([Pitot cover], [APPLY]),
 		([Fuel selector], [LEFT or RIGHT]),
 		([Tach, Hobbs times], [RECORD]),
-		([FlightCircle], [CHECK IN]),
+		([Flight Circle], [CHECK IN]),
 		([Doors], [LOCK]),
 	)
 ]
@@ -468,7 +468,7 @@
 	#columns(2, gutter: 2*margins)[
 		= Ground Checklists #h(1fr) N66083
 		#columns(2)[
-			#set text(9.4pt)
+			#set text(9.5pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
