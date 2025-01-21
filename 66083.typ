@@ -463,9 +463,11 @@
 
 #set text(fallback: false, font: "DejaVu Sans")
 
+#let heading_size = 10pt
 #let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	#columns(2, gutter: 2*margins)[
+		#set text(heading_size)
 		= Ground Checklists #h(1fr) N66083
 		#columns(2)[
 			#set text(9.5pt)
@@ -483,6 +485,7 @@
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	#columns(2, gutter: 2*margins)[
+		#set text(heading_size)
 		#box(fill: red, width: 100%,
 		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
 		#v(-.5em)
