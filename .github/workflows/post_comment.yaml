@@ -84,8 +84,10 @@ jobs:
             [72PE](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/72pe.pdf)
             [73146](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73146.pdf)
             <details><summary>66083</summary>
-            ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_1.svg)
-            ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_2.svg)
+            ![Page 1](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_1.svg)
+            ![Page 2](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_2.svg)
+            ![Page 3](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_3.svg)
+            ![Page 4](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/66083_4.svg)
             </details>
             <details><summary>72PE</summary>
             ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/72pe_1.svg)
