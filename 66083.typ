@@ -67,9 +67,9 @@
 ]
 
 // -----------------------------------------------------------------------------
-// Emergency Checklists (left side)
+// Engine Failures
 // -----------------------------------------------------------------------------
-#let left_emergency_checklists = [
+#let engine_failures = [
 	#checklist("Engine Failure During Takeoff Roll", black, emergency: true,
 		([Throttle], [IDLE]),
 		([Brakes], [APPLY]),
@@ -100,6 +100,12 @@
 			slowly, lean mixture as required]),
 		([Fuel pump], [OFF], [If fuel flow drops to zero, turn fuel pump back on]),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Forced Landings
+// -----------------------------------------------------------------------------
+#let forced_landings = [
 	#checklist("Emergency Landing Without Engine Power", black, emergency: true,
 		([Seats, seatbelts], [UPRIGHT, SECURE]),
 		([Airspeed], [Flaps up: 70 KIAS\ Flaps 10°-FULL: 65 KIAS]),
@@ -145,6 +151,12 @@
 		([Airplane], [EVACUATE THROUGH CABIN DOORS], [If necessary, open window and flood cabin to equalize pressure so doors can be opened.]),
 		([Life vests, raft], [INFLATE WHEN CLEAR OF AIRPLANE]),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Fires
+// -----------------------------------------------------------------------------
+#let fires = [
 	#checklist("Fire During Start on Ground", black, emergency: true,
 		([Magnetos switch], [START (continue cranking to start the engine)]),
 		([If engine starts:], []),
@@ -202,12 +214,6 @@
 		 [When sure fire is completely extinguished]),
 		([Land], [ASAP to inspect for damage]),
 	)
-]
-
-// -----------------------------------------------------------------------------
-// Emergency Checklists (right side)
-// -----------------------------------------------------------------------------
-#let right_emergency_checklists = [
 	#checklist("Wing Fire", black, emergency: true,
 		([Landing, taxi lights], [OFF]),
 		([Nav, strobe lights], [OFF]),
@@ -216,6 +222,12 @@
 			Land ASAP using flaps only as required for final approach and
 			touchdown.], []),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Icing, Excessive Fuel Vapor, and Abnormal Landings
+// -----------------------------------------------------------------------------
+#let icing_vapor_abnormal_landings = [
 	#checklist("Inadvertent Icing Encounter During Flight", black, emergency: true,
 		([Pitot heat], [ON]),
 		([Turn or change altitude to obtain an OAT less conducive to icing.], []),
@@ -261,6 +273,12 @@
 		([Touchdown], [ON MAINS], [Hold nosewheel off ground as long as
 			possible, maintain full up elevator as airplane slows to stop]),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Electrical Power Supply System Malfunctions
+// -----------------------------------------------------------------------------
+#let electrical_malfunctions = [
 	// Several of the POH's electrical failure checklists have duplicate
 	// instructions for reducing electrical load. This checklist moves those
 	// instructinos into a checklist called Reduce Electrical Load, and modifies
@@ -314,6 +332,12 @@
 			possible before extending flaps. Flap motor is a large electrical
 			load.]),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Instrument Failures, High Carbon Monoxide
+// -----------------------------------------------------------------------------
+#let instrument_failures_high_co = [
 	#checklist("Red X - PFD Airspeed Indicator", black, emergency: true,
 		([ADC/AHRS circuit breakers (ESS BUS and AVN BUS 1)], [CHECK IN], [If
 			open, reset circuit breaker. If circuit breaker opens again, do not
@@ -487,19 +511,59 @@
 	#columns(2, gutter: 2*margins)[
 		#set text(heading_size)
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
+		     align(center, box(fill: white, outset: 1em)[= Engine Failures]))
 		#v(-.5em)
-		#columns(3, gutter: 2mm)[
-			#set text(6pt)
-			#left_emergency_checklists
+		#columns(2)[
+			#set text(9pt)
+			#engine_failures
 		]
 		#colbreak()
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
+		     align(center, box(fill: white, outset: 1em)[= Instrument Failures, High CO Level]))
 		#v(-.5em)
-		#columns(3, gutter: 2mm)[
-			#set text(6pt)
-			#right_emergency_checklists
+		#columns(2)[
+			#set text(9pt)
+			#instrument_failures_high_co
+		]
+	]
+]
+#page(flipped: true, margin: margins, paper: "us-letter")[
+	#columns(2, gutter: 2*margins)[
+		#set text(heading_size)
+		#box(fill: red, width: 100%,
+		     align(center, box(fill: white, outset: 1em)[= Electrical Malfunctions]))
+		#v(-.5em)
+		#columns(2)[
+			#set text(9pt)
+			#electrical_malfunctions
+		]
+		#colbreak()
+		#box(fill: red, width: 100%,
+		     align(center, box(fill: white, outset: 1em)[= Forced Landings]))
+		#v(-.5em)
+		#columns(2)[
+			#set text(9pt)
+			#forced_landings
+		]
+	]
+]
+#page(flipped: true, margin: margins, paper: "us-letter")[
+	#columns(2, gutter: 2*margins)[
+		#set text(heading_size)
+		#box(fill: red, width: 100%,
+		     align(center, box(fill: white, outset: 1em)[= Fires]))
+		#v(-.5em)
+		#columns(2)[
+			#set text(9pt)
+			#fires
+		]
+		#colbreak()
+		#box(fill: red, width: 100%,
+		     align(center, box(fill: white, outset: 1em)[= Icing, Fuel Vapor, Abnormal Landings]))
+		#v(-.5em)
+		#columns(2)[
+			#set text(9pt)
+			#icing_vapor_abnormal_landings
 		]
 	]
 ]
