@@ -20,66 +20,6 @@
 #import "common.typ": checklist, checklist_group
 
 // -----------------------------------------------------------------------------
-// Ground Checklists and Information page
-// -----------------------------------------------------------------------------
-#let ground_checklists_and_info = [
-	#checklist("Preflight", black,
-		checklist_group("Fluids"),
-		([Magnetos], [OFF]),
-		([Fuel quantity], [CHECK VISUALLY]),
-		([Fuel sumps], [DRAIN],
-		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
-		([Fuel filler caps], [SECURE]),
-		([Engine oil level], [CHECK], [Minimum 6 quarts]),
-		checklist_group("Cabin"),
-		([Pitot cover], [REMOVE]),
-		([POH], [VERIFY PRESENT]),
-		([Master], [ON]),
-		([Flaps], [EXTEND]),
-		([Fuel gauges], [CHECK QUANTITY]),
-		([Lights], [CHECK]),
-		([Tach time], [RECORD]),
-		([Pitot heat], [TEST]),
-		([Master], [OFF]),
-		([Fire extinguisher], [SECURE]),
-		([Control lock], [REMOVE]),
-		checklist_group("Empennage"),
-		([Rudder gust lock], [REMOVE]),
-		([Control surfaces], [CHECK], [Freedom of movement and security]),
-		checklist_group("Right"),
-		([Main wheel tire], [CHECK INFLATION]),
-		([Aileron], [CHECK], [Freedom of movement and security]),
-		checklist_group("Nose"),
-		([Propeller, spinner], [CHECK], [For nicks and security]),
-		([Landing light], [CHECK CLEAR]),
-		([Air filter], [CHECK CLEAR]),
-		([Nosewheel & strut], [CHECK INFLATED]),
-		([Static source], [CHECK CLEAR]),
-		checklist_group("Left"),
-		([Main wheel tire], [CHECK INFLATION]),
-		([Fuel tank vent], [CHECK CLEAR]),
-		([Pitot tube], [CHECK CLEAR]),
-		([Stall warning], [TEST]),
-		([Aileron], [CHECK], [Freedom of movement and security]),
-		checklist_group("Final"),
-		([Flight Circle], [DISPATCH]),
-		([Tach, Hobbs times], [RECORD]),
-		([Baggage door], [LOCK]),
-		([Chocks], [REMOVE]),
-		([Tie-downs], [REMOVE]),
-	)
-	#checklist("Securing", black,
-		([Control lock], [INSTALL]),
-		([Tie-downs, chocks], [APPLY]),
-		([Vents, windows], [CLOSE]),
-		([Pitot cover], [APPLY]),
-		([Tach, Hobbs times], [RECORD]),
-		([Flight Circle], [CHECK IN]),
-		([Doors], [LOCK]),
-	)
-]
-
-// -----------------------------------------------------------------------------
 // Operating Checklists
 // -----------------------------------------------------------------------------
 #let operating_checklists = [
@@ -365,6 +305,66 @@
 		([Alternator], [OFF]),
 		([Nonessential electrical equipment], [OFF]),
 		([Flight], [TERMINATE], [as soon as practical]),
+	)
+]
+
+// -----------------------------------------------------------------------------
+// Ground Checklists and Information page
+// -----------------------------------------------------------------------------
+#let ground_checklists_and_info = [
+	#checklist("Preflight", black,
+		checklist_group("Fluids"),
+		([Magnetos], [OFF]),
+		([Fuel quantity], [CHECK VISUALLY]),
+		([Fuel sumps], [DRAIN],
+		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
+		([Fuel filler caps], [SECURE]),
+		([Engine oil level], [CHECK], [Minimum 6 quarts]),
+		checklist_group("Cabin"),
+		([Pitot cover], [REMOVE]),
+		([POH], [VERIFY PRESENT]),
+		([Master], [ON]),
+		([Flaps], [EXTEND]),
+		([Fuel gauges], [CHECK QUANTITY]),
+		([Lights], [CHECK]),
+		([Tach time], [RECORD]),
+		([Pitot heat], [TEST]),
+		([Master], [OFF]),
+		([Fire extinguisher], [SECURE]),
+		([Control lock], [REMOVE]),
+		checklist_group("Empennage"),
+		([Rudder gust lock], [REMOVE]),
+		([Control surfaces], [CHECK], [Freedom of movement and security]),
+		checklist_group("Right"),
+		([Main wheel tire], [CHECK INFLATION]),
+		([Aileron], [CHECK], [Freedom of movement and security]),
+		checklist_group("Nose"),
+		([Propeller, spinner], [CHECK], [For nicks and security]),
+		([Landing light], [CHECK CLEAR]),
+		([Air filter], [CHECK CLEAR]),
+		([Nosewheel & strut], [CHECK INFLATED]),
+		([Static source], [CHECK CLEAR]),
+		checklist_group("Left"),
+		([Main wheel tire], [CHECK INFLATION]),
+		([Fuel tank vent], [CHECK CLEAR]),
+		([Pitot tube], [CHECK CLEAR]),
+		([Stall warning], [TEST]),
+		([Aileron], [CHECK], [Freedom of movement and security]),
+		checklist_group("Final"),
+		([Flight Circle], [DISPATCH]),
+		([Tach, Hobbs times], [RECORD]),
+		([Baggage door], [LOCK]),
+		([Chocks], [REMOVE]),
+		([Tie-downs], [REMOVE]),
+	)
+	#checklist("Securing", black,
+		([Control lock], [INSTALL]),
+		([Tie-downs, chocks], [APPLY]),
+		([Vents, windows], [CLOSE]),
+		([Pitot cover], [APPLY]),
+		([Tach, Hobbs times], [RECORD]),
+		([Flight Circle], [CHECK IN]),
+		([Doors], [LOCK]),
 	)
 ]
 
