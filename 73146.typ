@@ -59,7 +59,7 @@
 		([Doors and windows], [CLOSED, LOCKED]),
 		([Flight controls], [FREE and CORRECT]),
 		([Fuel valve], [BOTH]),
-		([Mixture], [RICH], [Below 3000 feet]),
+		([Mixture], [RICH (below 3000 feet)]),
 		([Throttle], [1700 RPM]),
 		([Magnetos], [CHECK], [Max drop 125 RPM, max diff. 50 RPM]),
 		([Engine gauges, ammeter], [CHECK]),
@@ -79,17 +79,17 @@
 		([Trim], [TAKEOFF]),
 		([Fuel valve], [BOTH]),
 		([Fuel quantity], [CHECK]),
-		([Mixture], [RICH], [Below 3000 feet]),
+		([Mixture], [RICH (below 3000 feet)]),
 	)
 	#checklist("Climb", black,
 		([Airspeed], [70-90 KIAS]),
 		([Throttle], [FULL]),
-		([Mixture], [RICH], [May lean above 3000 feet]),
+		([Mixture], [RICH (lean above 3000 feet)]),
 	)
 	#checklist("Cruise", black,
-		([Power], [2200-2700 RPM], [No more than 75%]),
+		([Power], [2200-2700 RPM], [No more than 75% power]),
 		([Trim], [ADJUST]),
-		([Mixture], [LEAN]),
+		([Mixture], [LEAN (for max RPM)]),
 	)
 	#checklist("Descent", black,
 		([Mixture], [RICH]),
@@ -173,13 +173,14 @@
 		([Touchdown], [SLIGHTLY TAIL LOW]),
 		([Brakes], [APPLY HEAVILY]),
 	)
+	#colbreak()
 	// POH title: PRECAUTIONARY LANDING WITH ENGINE POWER. Removed "with engine
 	// power" to fit on one line.
 	#checklist("Precautionary Landing", black, emergency: true,
 		([Flaps], [20°]),
 		([Airspeed], [60 KIAS]),
-		([Selected field], [FLY OVER], [Note terrain/obstructions.
-		 Retract flaps upon reaching a safe altitude and airspeed.]),
+		([Selected field], [FLY OVER], [Note terrain/obstructions. Retract
+			flaps\ upon reaching a safe altitude and airspeed.]),
 		([Radios, electrical switches], [OFF]),
 		([Flaps], [40° (on final approach)]),
 		([Airspeed], [60 KIAS]),
@@ -195,7 +196,7 @@
 		([Flaps], [20°-40°]),
 		([Power], [300 FT/MIN DESCENT AT 55 KIAS],
 		 [If no power available, approach\ flaps up 65 KIAS or flaps 10° 60 KIAS]),
-		([Strong wind, heavy seas:\ #h(1em)LAND INTO WIND\
+		([Strong wind, heavy seas: LAND INTO WIND\
 		  Light wind, heavy swells:\ #h(1em)LAND PARALLEL TO SWELLS], []),
 		([Doors], [UNLATCH]),
 		([Touchdown], [LEVEL ATTITUDE], [at established rate of descent]),
@@ -203,6 +204,12 @@
 		([Airplane], [EVACUATE]),
 		([Life vests/raft], [INFLATE]),
 	)
+]
+
+// -----------------------------------------------------------------------------
+// Emergency Checklists (right side)
+// -----------------------------------------------------------------------------
+#let right_emergency_checklists = [
 	#checklist("Engine Fire During Start On Ground", black, emergency: true,
 		([Cranking], [CONTINUE]),
 		([If engine starts:], []),
@@ -227,19 +234,13 @@
 		([Master], [OFF]),
 		([Cabin heat & air], [OFF], [(except overhead vents)]),
 		([Airspeed], [100 KIAS],
-		 [If fire is not extinguished, increase glide speed to find an airspeed
-		  which will provide an incombustible mixture]),
-		([Forced Landing With Engine Failure checklist], [EXECUTE]),
+		 [If fire is not extinguished, increase\ glide speed to find an airspeed
+		  which\ will provide an incombustible mixture]),
+		([Forced Landing With\ Engine Failure checklist], [EXECUTE]),
 	)
-]
-
-// -----------------------------------------------------------------------------
-// Emergency Checklists (right side)
-// -----------------------------------------------------------------------------
-#let right_emergency_checklists = [
 	#checklist("Electrical Fire in Flight", black, emergency: true,
 		([Master], [OFF]),
-		([All other switches\ (except magnetos)], [OFF]),
+		([All other switches (except magnetos)], [OFF]),
 		([Vents/cabin air/heat], [CLOSE]),
 		([Fire extinguisher], [USE]),
 		([If fire appears out and electrical power is necessary to continue flight:], []),
@@ -255,7 +256,7 @@
 		([Master], [OFF]),
 		([Vents/cabin air/heat], [CLOSED], [(to avoid drafts)]),
 		([Fire extinguisher], [USE],
-		 [WARNING: After discharging extinguisher within a closed\ cabin,
+		 [WARNING: After discharging extinguisher within a closed cabin,
 		  ventilate cabin]),
 		([Land ASAP, inspect for damage], []),
 	)
@@ -273,9 +274,10 @@
 		([Cabin air], [ADJUST], [Maximize defroster heat and airflow]),
 		([Throttle], [OPEN]),
 		([Carburetor/air filter icing], [MONITOR],
-			[Apply carb heat as required, lean mixture for maximum RPM if\ used continuously]),
-		([Land], [NEAREST AIRPORT], [With very rapid ice build-up, select suitable
-			off-airport landing site]),
+			[Apply carb heat as required, lean mixture\ for maximum RPM if used
+			continuously]),
+		([Land], [NEAREST AIRPORT], [With very rapid ice build-up, select\
+			suitable off-airport landing site]),
 		([With ≥ 1/4 inch ice on the leading edges, prepare for significantly higher
 		  stall speed], []),
 		([Flaps], [LEAVE RETRACTED]),
@@ -293,7 +295,7 @@
 	)
 	#checklist("Landing With a Flat Main Tire", black, emergency: true,
 		([Approach], [NORMAL]),
-		([Touchdown], [GOOD TIRE FIRST], [Hold airplane off flat\ tire as long as possible]),
+		([Touchdown], [GOOD TIRE FIRST], [Hold airplane off flat tire as long as possible]),
 	)
 	#checklist("Over-Voltage Light Illuminates", black, emergency: true,
 		([Master], [OFF (both sides)]),
@@ -304,7 +306,7 @@
 	#checklist("Ammeter Shows Discharge", black, emergency: true,
 		([Alternator], [OFF]),
 		([Nonessential electrical equipment], [OFF]),
-		([Flight], [TERMINATE], [as soon as practical]),
+		([Flight], [TERMINATE as soon as practical]),
 	)
 ]
 
@@ -317,7 +319,7 @@
 		([Magnetos], [OFF]),
 		([Fuel quantity], [CHECK VISUALLY]),
 		([Fuel sumps], [DRAIN],
-		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
+		 [Left wing, right wing, fuel strainer.\ Inspect for contamination.]),
 		([Fuel filler caps], [SECURE]),
 		([Engine oil level], [CHECK], [Minimum 6 quarts]),
 		checklist_group("Cabin"),
@@ -374,16 +376,17 @@
 
 #set text(fallback: false, font: "DejaVu Sans")
 
-#let heading_size = 10pt
+#let content_size = 7.5pt
+#let heading_base_size = 10pt
 #let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	// page() supports multiple columns, but does not support setting the gutter
 	// width for multiple columns, so we call columns() ourselves instead.
 	#columns(2, gutter: 2*margins)[
-		#set text(heading_size)
+		#set text(heading_base_size)
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(8.5pt)
+			#set text(content_size)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
@@ -391,27 +394,27 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N73146
 		#columns(2)[
-			#set text(7.2pt)
+			#set text(content_size)
 			#operating_checklists
 		]
 	]
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	#columns(2, gutter: 2*margins)[
-		#set text(heading_size)
+		#set text(heading_base_size)
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
+		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Forced Landings]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(8.3pt)
+			#set text(content_size)
 			#left_emergency_checklists
 		]
 		#colbreak()
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Emergency Checklists]))
+		     align(center, box(fill: white, outset: 1em)[= Fires, Icing, Flat Tire, Electrical]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(8.8pt)
+			#set text(content_size)
 			#right_emergency_checklists
 		]
 	]
