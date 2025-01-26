@@ -103,6 +103,37 @@
 }
 
 //------------------------------------------------------------------------------
+// container()
+//------------------------------------------------------------------------------
+
+// Produces a box with a similar style to checklist, but which doesn't provide
+// any internal formatting.
+#let container(title, color, emergency: false, inset: true, content) = {
+	let inner_radius = inner_radius;
+	let outer_radius = inner_radius + edge_width;
+	// To make the emergency page items stand out visually, give them sharp
+	// corners.
+	if emergency {
+		inner_radius = 0em
+		outer_radius = 0em
+	}
+	// Some users want the content inside the white background rectangle to be
+	// inset, others don't. Let that be configurable.
+	let rect_inset = 0em
+	if inset {
+		rect_inset = (x: title_inset, y: line_spacing/2)
+	}
+	// The outer rectangle provides the outline around the checklist as well as
+	// the background fill for the title portion. The inner rectangle provides a
+	// solid white background, and insets the contents to match the title inset.
+	rect(fill: color, inset: edge_width, radius: outer_radius, stack(
+		box(inset: title_inset, text(fill: white, weight: "bold", title)),
+		rect(fill: white, inset: rect_inset, radius: (bottom: inner_radius),
+			width: 100%, content)
+	))
+}
+
+//------------------------------------------------------------------------------
 // checklist()
 //------------------------------------------------------------------------------
 
@@ -150,12 +181,5 @@
 		}
 		row
 	}
-	// The outer rectangle provides the outline around the checklist as well as
-	// the background fill for the title portion. The inner rectangle provides a
-	// solid white background, preventing the outer rectangle from showing
-	// through the cracks between the per-step boxes.
-	rect(fill: color, inset: edge_width, radius: vars.outer_radius, stack(
-		box(inset: title_inset, text(fill: white, weight: "bold", title)),
-		rect(fill: white, inset: 0em, radius: (bottom: vars.inner_radius), stack(..rows))
-	))
+	container(title, color, emergency: emergency, inset: false, stack(..rows))
 }
