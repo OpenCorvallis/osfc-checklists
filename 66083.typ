@@ -279,15 +279,23 @@
 // Electrical Power Supply System Malfunctions
 // -----------------------------------------------------------------------------
 #let electrical_malfunctions = [
-	// Several of the POH's electrical failure checklists have duplicate
-	// instructions for reducing electrical load. This checklist moves those
-	// instructinos into a checklist called Reduce Electrical Load, and modifies
-	// the redundant procedures to refer to the new checklist. This reduces the
-	// amount of repeated information, allowing us to increase the font size
-	// without running out of space on the page.
 	#checklist("HIGH VOLTS or M Bat Amps > 40", black, emergency: true,
 		([Master (ALT only)], [OFF]),
-		([Reduce Electrical Load checklist], [RUN]),
+		([Avionics (BUS 1)], [OFF]),
+		([Pitot heat], [OFF]),
+		([Beacon, taxi, nav, strobe lights], [OFF]),
+		([Landing light], [OFF (use as req'd for landing)]),
+		([Cabin power 12V], [OFF]),
+		([Note: When M bus volts drops below 20V, the standby battery will
+			supply power to the essential bus for at least 30 minutes], []),
+		([COM1, NAV1], [TUNE]),
+		([COM1 MIC and NAV1], [SELECT], [If COM2 MIC and NAV2 are selected when
+			avionics bus 2 is off, the radios cannot be tuned]),
+		([Avionics (BUS 2)], [OFF if clear of clouds], [The following items will
+			not operate: autopilot, COM2, transponder, audio panel, NAV2, MFD]),
+		([Land], [AS SOON AS PRACTICAL], [Make sure a successful landing is
+			possible before extending flaps. Flap motor is a large electrical
+			load.]),
 	)
 	#checklist("LOW VOLTS Annunciator Comes On < 1000 RPM", black, emergency: true,
 		([Throttle], [1000 RPM]),
@@ -313,23 +321,22 @@
 		([M Bus volts], [VERIFY 27.5V minimum]),
 		([M Bat amps], [VERIFY POSITIVE]),
 		([If LOW VOLTS annunciator remains on:], []),
-		([#h(1em)Reduce Electrical Load checklist], [RUN]),
-	)
-	#checklist("Reduce Electrical Load", black, emergency: true,
-		([Avionics (BUS 1)], [OFF]),
-		([Pitot heat], [OFF]),
-		([Beacon, taxi, nav, strobe lights], [OFF]),
-		([Landing light], [OFF (use as req'd for landing)]),
-		([Cabin power 12V], [OFF]),
-		([Note: When M bus volts drops below 20V, the standby battery will
-			supply power to the essential bus for at least 30 minutes], []),
-		([COM1, NAV1], [TUNE]),
-		([COM1 MIC and NAV1], [SELECT], [If COM2 MIC and NAV2 are selected when
-			avionics bus 2 is off, the radios cannot be tuned]),
-		([Avionics (BUS 2)], [OFF if clear of clouds], [The following items will
-			not operate: autopilot, COM2, transponder, audio panel, NAV2, MFD]),
-		([Land], [AS SOON AS PRACTICAL], [Make sure a successful landing is
-			possible before extending flaps. Flap motor is a large electrical
+		([#h(1em)Avionics (BUS 1)], [OFF]),
+		([#h(1em)Pitot heat], [OFF]),
+		([#h(1em)Beacon, taxi, nav, strobe lights], [OFF]),
+		([#h(1em)Landing light], [OFF (use as req'd for landing)]),
+		([#h(1em)Cabin power 12V], [OFF]),
+		([#h(1em)Note: When M bus volts drops below 20V, the standby battery
+			will supply power to the essential bus for at least 30 minutes],
+			[]),
+		([#h(1em)COM1, NAV1], [TUNE]),
+		([#h(1em)COM1 MIC and NAV1], [SELECT], [If COM2 MIC and NAV2 are
+			selected when avionics bus 2 is off, the radios cannot be tuned]),
+		([#h(1em)Avionics (BUS 2)], [OFF if clear of clouds], [The following
+			items will not operate: autopilot, COM2, transponder, audio panel,
+			NAV2, MFD]),
+		([#h(1em)Land], [AS SOON AS PRACTICAL], [Make sure a successful landing
+			is possible before extending flaps. Flap motor is a large electrical
 			load.]),
 	)
 ]
