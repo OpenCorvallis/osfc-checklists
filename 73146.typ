@@ -155,7 +155,7 @@
 		([Carburetor heat], [ON]),
 		([Fuel valve], [BOTH]),
 		([Mixture], [RICH]),
-		([Magnetos], [BOTH (START if prop stopped)]),
+		([Magnetos], [BOTH], [(START if prop stopped)]),
 		([Primer], [IN and LOCKED]),
 	)
 	// POH title: EMERGENCY LANDING WITHOUT ENGINE POWER, reworded to fit on one
@@ -179,8 +179,8 @@
 	#checklist("Precautionary Landing", black, emergency: true,
 		([Flaps], [20°]),
 		([Airspeed], [60 KIAS]),
-		([Selected field], [FLY OVER], [Note terrain/obstructions. Retract
-			flaps\ upon reaching a safe altitude and airspeed.]),
+		([Selected field], [FLY OVER], [Note terrain/obstructions.\ Retract
+			flaps upon reaching\ a safe altitude and airspeed.]),
 		([Radios, electrical switches], [OFF]),
 		([Flaps], [40° (on final approach)]),
 		([Airspeed], [60 KIAS]),
@@ -196,7 +196,7 @@
 		([Flaps], [20°-40°]),
 		([Power], [300 FT/MIN DESCENT AT 55 KIAS],
 		 [If no power available, approach\ flaps up 65 KIAS or flaps 10° 60 KIAS]),
-		([Strong wind, heavy seas: LAND INTO WIND\
+		([Strong wind, heavy seas:\ #h(1em)LAND INTO WIND\
 		  Light wind, heavy swells:\ #h(1em)LAND PARALLEL TO SWELLS], []),
 		([Doors], [UNLATCH]),
 		([Touchdown], [LEVEL ATTITUDE], [at established rate of descent]),
@@ -376,7 +376,6 @@
 
 #set text(fallback: false, font: "DejaVu Sans")
 
-#let content_size = 7.5pt
 #let heading_base_size = 10pt
 #let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
@@ -386,7 +385,7 @@
 		#set text(heading_base_size)
 		= Ground Checklists and Information #h(1fr) N73146
 		#columns(2)[
-			#set text(content_size)
+			#set text(8.5pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
@@ -394,7 +393,7 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N73146
 		#columns(2)[
-			#set text(content_size)
+			#set text(7.5pt)
 			#operating_checklists
 		]
 	]
@@ -406,7 +405,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Forced Landings]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(content_size)
+			#set text(8.5pt)
 			#left_emergency_checklists
 		]
 		#colbreak()
@@ -414,7 +413,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Fires, Icing, Flat Tire, Electrical]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(content_size)
+			#set text(7.6pt)
 			#right_emergency_checklists
 		]
 	]
