@@ -17,7 +17,7 @@
 // formatting details in one place in the file, making it easier to perform
 // formatting revisions.
 
-#import "common.typ": checklist, checklist_group, container, palette
+#import "common.typ": checklist, checklist_group, container, palette, title_inset
 
 // -----------------------------------------------------------------------------
 // Operating Checklists
@@ -372,15 +372,16 @@
 		([Flight Circle], [CHECK IN]),
 		([Doors], [LOCK]),
 	)
-	#container("Speeds", palette.purple, {
+	#container("Speeds", palette.purple, inset: false, {
 		set par(leading: 0.3em)
 		table(
 			align: (left + horizon, center, center),
 			columns: (auto, 1fr, auto),
-			inset: (x: 0em, y: .4em),
-			stroke: (x: none),
-			table.hline(stroke: none),
-			[], [], table.cell(inset: (top: 0em))[KIAS],
+			fill: (_, row) => (none, silver).at(calc.rem(row, 2)),
+			inset: (x: title_inset, y: .3em),
+			stroke: none,
+			[], [], [KIAS],
+			table.hline(stroke: .05em + palette.purple),
 			[Best glide (V#sub[G])], [], [65],
 			[Best angle\ of climb (V#sub[X])], [Sea level\ 10,000 ft], [64\ 62],
 			[Best rate\ of climb (V#sub[Y])], [Sea level\ 10,000 ft], [78\ 68],
@@ -390,12 +391,8 @@
 			[Short-field\ takeoff climb], box(align(left)[Flaps up\ Flaps 10]),
 				[59\ 55],
 			[Normal enroute\ climb], [Sea level\ 10,000 ft], [80-90\ 70-80],
-			table.cell(
-				inset: (bottom: 0em))[Design maneuvering\ speed (V#sub[A])],
-				table.cell(inset: (bottom: 0em),
-					[2300 lbs\ 1950 lbs\ 1600 lbs]),
-				table.cell(inset: (bottom: 0em), [97\ 89\ 80]),
-			table.hline(stroke: none),
+			[Design maneuvering\ speed (V#sub[A])],
+				[2300 lbs\ 1950 lbs\ 1600 lbs], [97\ 89\ 80],
 		)
 	})
 ]
