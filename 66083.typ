@@ -14,13 +14,13 @@
 
 // 73146.typ is more extensively commented, check there first for design notes.
 
-#import "common.typ": checklist, checklist_group
+#import "common.typ": checklist, checklist_group, palette
 
 // -----------------------------------------------------------------------------
 // Operating Checklists
 // -----------------------------------------------------------------------------
 #let operating_checklists = [
-	#checklist("Start", black,
+	#checklist("Start", palette.purple,
 		checklist_group("Before Start"),
 		([Preflight inspection], [COMPLETE]),
 		([Passenger briefing], [COMPLETE]),
@@ -70,7 +70,8 @@
 // Engine Failures
 // -----------------------------------------------------------------------------
 #let engine_failures = [
-	#checklist("Engine Failure During Takeoff Roll", black, emergency: true,
+	#checklist("Engine Failure During Takeoff Roll", palette.brown,
+		emergency: true,
 		([Throttle], [IDLE]),
 		([Brakes], [APPLY]),
 		([Flaps], [RETRACT]),
@@ -79,7 +80,8 @@
 		([Standby battery], [OFF]),
 		([Master (ALT and BAT)], [OFF]),
 	)
-	#checklist("Engine Failure Immediately After Takeoff", black, emergency: true,
+	#checklist("Engine Failure Immediately After Takeoff", palette.dark_blue,
+		emergency: true,
 		([Airspeed], [Flaps up: 70 KIAS\ Flaps 10°-FULL: 65 KIAS]),
 		([Mixture], [CUT-OFF]),
 		([Fuel shutoff valve], [OFF (pull full out)]),
@@ -90,7 +92,8 @@
 		([Door], [UNLATCH]),
 		([Land], [STRAIGHT AHEAD]),
 	)
-	#checklist("Engine Failure During Flight (Restart Procedures)", black, emergency: true,
+	#checklist("Engine Failure During Flight (Restart Procedures)",
+		palette.purple, emergency: true,
 		([Airspeed], [68 KIAS (best glide speed)]),
 		([Fuel shutoff valve], [ON (push full in)]),
 		([Fuel selector valve], [BOTH]),
@@ -106,7 +109,8 @@
 // Forced Landings
 // -----------------------------------------------------------------------------
 #let forced_landings = [
-	#checklist("Emergency Landing Without Engine Power", black, emergency: true,
+	#checklist("Emergency Landing Without Engine Power", palette.light_green,
+		emergency: true,
 		([Seats, seatbelts], [UPRIGHT, SECURE]),
 		([Airspeed], [Flaps up: 70 KIAS\ Flaps 10°-FULL: 65 KIAS]),
 		([Mixture], [CUT-OFF]),
@@ -119,7 +123,8 @@
 		([Touchdown], [SLIGHTLY TAIL LOW]),
 		([Brakes], [APPLY HEAVILY]),
 	)
-	#checklist("Precautionary Landing With Engine Power", black, emergency: true,
+	#checklist("Precautionary Landing With Engine Power", palette.dark_green,
+		emergency: true,
 		([Seats, seatbelts], [UPRIGHT, SECURE]),
 		([Airspeed], [65 KIAS]),
 		([Flaps], [20°]),
@@ -134,7 +139,7 @@
 		([Magnetos], [OFF]),
 		([Brakes], [APPLY HEAVILY]),
 	)
-	#checklist("Ditching", black, emergency: true,
+	#checklist("Ditching", palette.light_blue, emergency: true,
 		([Radio], [MAYDAY on 121.5 MHz (Give location, intentions)]),
 		([Transponder], [SQUAWK 7700]),
 		([Heavy objects (in baggage area)], [SECURE or JETTISON (if possible)]),
@@ -157,7 +162,8 @@
 // Fires
 // -----------------------------------------------------------------------------
 #let fires = [
-	#checklist("Fire During Start on Ground", black, emergency: true,
+	#checklist("Fire During Start on Ground", palette.light_green,
+		emergency: true,
 		([Magnetos switch], [START (continue cranking to start the engine)]),
 		([If engine starts:], []),
 		([#h(1em)Power], [1800 RPM for a few minutes]),
@@ -178,7 +184,7 @@
 		([#h(1em)Fire], [EXTINGUISH via fire extinguisher, wool blanket, or dirt]),
 		([Both cases: inspect and repair damage before conducting another flight.], []),
 	)
-	#checklist("Engine Fire in Flight", black, emergency: true,
+	#checklist("Engine Fire in Flight", palette.purple, emergency: true,
 		([Mixture], [CUT-OFF]),
 		([Fuel shutoff valve], [OFF (pull)]),
 		([Fuel pump], [OFF]),
@@ -189,7 +195,7 @@
 			airspeed limitations, which provides an incombustible mixture]),
 		([Forced landing], [EXECUTE], [Refer to Emergency Landing Without Engine Power checklist]),
 	)
-	#checklist("Electrical Fire in Flight", black, emergency: true,
+	#checklist("Electrical Fire in Flight", palette.dark_blue, emergency: true,
 		([Standby battery], [OFF]),
 		([Master (ALT and BAT)], [OFF]),
 		([Vents/cabin air/heat], [CLOSE]),
@@ -205,7 +211,7 @@
 		([#h(1em)Avionics (BUS 1)], [ON]),
 		([#h(1em)Avionics (BUS 2)], [ON]),
 	)
-	#checklist("Cabin Fire", black, emergency: true,
+	#checklist("Cabin Fire", palette.light_blue, emergency: true,
 		([Standby battery], [OFF]),
 		([Master (ALT and BAT)], [OFF]),
 		([Vents/cabin air/heat], [CLOSE (to avoid drafts)]),
@@ -214,7 +220,7 @@
 		 [When sure fire is completely extinguished]),
 		([Land], [ASAP to inspect for damage]),
 	)
-	#checklist("Wing Fire", black, emergency: true,
+	#checklist("Wing Fire", palette.brown, emergency: true,
 		([Landing, taxi lights], [OFF]),
 		([Nav, strobe lights], [OFF]),
 		([Pitot heat], [OFF]),
@@ -228,7 +234,8 @@
 // Icing, Excessive Fuel Vapor, and Abnormal Landings
 // -----------------------------------------------------------------------------
 #let icing_vapor_abnormal_landings = [
-	#checklist("Inadvertent Icing Encounter During Flight", black, emergency: true,
+	#checklist("Inadvertent Icing Encounter During Flight", palette.light_blue,
+		emergency: true,
 		([Pitot heat], [ON]),
 		([Turn or change altitude to obtain an OAT less conducive to icing.], []),
 		([Cabin heat], [FULL ON]),
@@ -247,27 +254,30 @@
 		([Landing], [Perform in level attitude], [Avoid missed approaches if possible]),
 		([Missed approaches should be avoided whenever possible], []),
 	)
-	#checklist("Static Source Blockage (Erroneous Instrument Reading Suspected)", black, emergency: true,
+	#checklist(
+		"Static Source Blockage (Erroneous Instrument Reading Suspected)",
+		palette.dark_green, emergency: true,
 		([Alternate static], [PULL ON]),
 		([Cabin heat/air], [PULL ON]),
 		([Vents], [CLOSED]),
 		// TODO: Update this if we put the calibration table onto the checklist.
 		([Airspeed], [Consult calibration table], [Section 5, Figure 5-1 of POH]),
 	)
-	#checklist("Excessive Fuel Vapor (Fuel Flow Stabilization Procedures)", black, emergency: true,
+	#checklist("Excessive Fuel Vapor (Fuel Flow Stabilization Procedures)",
+		palette.dark_blue, emergency: true,
 		([If flow fluctuates ≥ 1 GPH or power surges occur], []),
 		([Fuel pump], [ON]),
 		([Mixture], [ADJUST], [as necessary for smooth operation]),
 		([Fuel selector valve], [SELECT OTHER TANK (if symptoms continue)]),
 		([Fuel pump], [OFF (after fuel flow stabilized)]),
 	)
-	#checklist("Landing With a Flat Main Tire", black, emergency: true,
+	#checklist("Landing With a Flat Main Tire", palette.brown, emergency: true,
 		([Approach], [NORMAL]),
 		([Flaps], [FULL]),
 		([Touchdown], [GOOD MAIN TIRE FIRST], [Keep flat tire in air as long as possible with aileron control]),
 		([Directional control], [MAINTAIN using brake on good wheel as required]),
 	)
-	#checklist("Landing With a Flat Nose Tire", black, emergency: true,
+	#checklist("Landing With a Flat Nose Tire", palette.purple, emergency: true,
 		([Approach], [NORMAL]),
 		([Flaps], [AS REQUIRED]),
 		([Touchdown], [ON MAINS], [Hold nosewheel off ground as long as
@@ -279,7 +289,8 @@
 // Electrical Power Supply System Malfunctions
 // -----------------------------------------------------------------------------
 #let electrical_malfunctions = [
-	#checklist("HIGH VOLTS or M Bat Amps > 40", black, emergency: true,
+	#checklist("HIGH VOLTS or M Bat Amps > 40", palette.light_green,
+		emergency: true,
 		([Master (ALT only)], [OFF]),
 		([Avionics (BUS 1)], [OFF]),
 		([Pitot heat], [OFF]),
@@ -297,7 +308,8 @@
 			possible before extending flaps. Flap motor is a large electrical
 			load.]),
 	)
-	#checklist("LOW VOLTS Annunciator Comes On < 1000 RPM", black, emergency: true,
+	#checklist("LOW VOLTS Annunciator Comes On < 1000 RPM", palette.dark_blue,
+		emergency: true,
 		([Throttle], [1000 RPM]),
 		([Low voltage annunciator], [VERIFY OFF],
 			// It is not immediately obvious from the POH that a pilot running
@@ -313,7 +325,8 @@
 	// POH name: LOW VOLTS ANNUNCIATOR COMES ON OR DOES NOT GO OFF AT HIGHER
 	// RPM. Simplified "COMES ON OR DOES NOT GO OFF AT HIGHER RPM" to just "On ≥
 	// 1000 RPM".
-	#checklist("LOW VOLTS Annunciator On ≥ 1000 RPM", black, emergency: true,
+	#checklist("LOW VOLTS Annunciator On ≥ 1000 RPM", palette.black,
+		emergency: true,
 		([Master (ALT only)], [OFF]),
 		([ALT FIELD breaker], [CHECK IN]),
 		([Master (ALT and BAT)], [ON]),
@@ -345,32 +358,37 @@
 // Instrument Failures, High Carbon Monoxide
 // -----------------------------------------------------------------------------
 #let instrument_failures_high_co = [
-	#checklist("Red X - PFD Airspeed Indicator", black, emergency: true,
+	#checklist("Red X - PFD Airspeed Indicator", palette.light_green,
+		emergency: true,
 		([ADC/AHRS circuit breakers (ESS BUS and AVN BUS 1)], [CHECK IN], [If
 			open, reset circuit breaker. If circuit breaker opens again, do not
 			reset]),
 		([Standby airspeed indicator], [USE for airspeed information]),
 	)
-	#checklist("Red X - PFD Altitude Indicator", black, emergency: true,
+	#checklist("Red X - PFD Altitude Indicator", palette.dark_green,
+		emergency: true,
 		([ADC/AHRS circuit breakers (ESS BUS and AVN BUS 1)], [CHECK IN], [If
 			open, reset circuit breaker. If circuit breaker opens again, do not
 			reset]),
 		([Standby altimeter], [CHECK current barometric pressure SET. USE for
 			altitude information]),
 	)
-	#checklist("Red X - PFD Attitude Indicator", black, emergency: true,
+	#checklist("Red X - PFD Attitude Indicator", palette.light_blue,
+		emergency: true,
 		([ADC/AHRS circuit breakers (ESS BUS and AVN BUS 1)], [CHECK IN], [If
 			open, reset circuit breaker. If circuit breaker opens again, do not
 			reset]),
 		([Standby attitude indicator], [USE for attitude information]),
 	)
-	#checklist("Red X - Horizontal Situation Indicator", black, emergency: true,
+	#checklist("Red X - Horizontal Situation Indicator", palette.purple,
+		emergency: true,
 		([ADC/AHRS circuit breakers (ESS BUS and AVN BUS 1)], [CHECK IN], [If
 			open, reset circuit breaker. If circuit breaker opens again, do not
 			reset]),
 		([Magnetic compass], [USE for heading information]),
 	)
-	#checklist("PFD1 COOLING or MFD1 COOLING Annunciator(s)", black, emergency: true,
+	#checklist("PFD1 COOLING or MFD1 COOLING Annunciator(s)", palette.dark_blue,
+		emergency: true,
 		([Cabin heat], [REDUCE (minimum preferred)]),
 		([Forward avionics fan], [CHECK (feel for airflow from screen on
 			glareshield)]),
@@ -380,7 +398,8 @@
 			minutes or if both annunciators come on:], []),
 		([#h(1em)Standby battery], [OFF (land as soon as practical)]),
 	)
-	#checklist("LOW VACUUM Annunciator Comes On", black, emergency: true,
+	#checklist("LOW VACUUM Annunciator Comes On", palette.black,
+		emergency: true,
 		([Vacuum indicator], [CHECK EIS ENGINE page to make sure vacuum pointer
 			is within green arc], [If vacuum pointer not in green arc or gyro
 			flag shows on standby attitude indicator, do not use standby
@@ -391,7 +410,8 @@
 	// detectors with them so this checklist may still be useful. Removed
 	// "annunciator" from the title as their personal detectors will not cause
 	// G1000 annunciations.
-	#checklist("High Carbon Monoxide (CO) Level", black, emergency: true,
+	#checklist("High Carbon Monoxide (CO) Level", palette.brown,
+		emergency: true,
 		([Cabin heat], [OFF (push full in)]),
 		([Cabin air], [ON (pull full out)]),
 		([Cabin vents], [OPEN]),
@@ -405,7 +425,7 @@
 // Ground Checklists and Information page
 // -----------------------------------------------------------------------------
 #let ground_checklists_and_info = [
-	#checklist("Preflight", black,
+	#checklist("Preflight", palette.brown,
 		checklist_group("Fluids"),
 		([Brakes], [AS NEEDED]),
 		([Magnetos], [OFF]),
@@ -442,7 +462,7 @@
 		([Fire extinguisher], [CHECK]),
 		([Control lock ], [REMOVE]),
 	)
-	#checklist("Preflight (continued)", black,
+	#checklist("Preflight (continued)", palette.brown,
 		checklist_group("Empennage"),
 		([Autopilot static], [VERIFY CLEAR]),
 		([Rudder gust lock], [REMOVE]),
@@ -476,7 +496,7 @@
 		([Chocks], [REMOVE]),
 		([Tie-downs], [REMOVE]),
 	)
-	#checklist("Securing", black,
+	#checklist("Securing", palette.black,
 		([Control lock], [INSTALL]),
 		([Tie-downs, chocks], [APPLY]),
 		([Vents, windows], [CLOSE]),
