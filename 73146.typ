@@ -17,13 +17,13 @@
 // formatting details in one place in the file, making it easier to perform
 // formatting revisions.
 
-#import "common.typ": checklist, checklist_group, container
+#import "common.typ": checklist, checklist_group, container, palette
 
 // -----------------------------------------------------------------------------
 // Operating Checklists
 // -----------------------------------------------------------------------------
 #let operating_checklists = [
-	#checklist("Start", black,
+	#checklist("Start", palette.purple,
 		checklist_group("Before Start"),
 		([Preflight inspection], [COMPLETE]),
 		([Passenger briefing], [COMPLETE]),
@@ -52,7 +52,7 @@
 		([EFB Setup], [AS DESIRED]),
 		([Navigation, landing lights], [ON]),
 	)
-	#checklist("Run-up", black,
+	#checklist("Run-up", palette.light_green,
 		([Instruments], [CHECK and SET]),
 		([VOR Check], [IF NEEDED]),
 		([Brakes], [SET]),
@@ -69,7 +69,7 @@
 		([Mixture], [GROUND LEAN]),
 		([Throttle friction], [ADJUST]),
 	)
-	#checklist("Before Takeoff", black,
+	#checklist("Before Takeoff", palette.dark_green,
 		([Radios], [SET]),
 		([Instruments], [SET]),
 		([Takeoff briefing], [COMPLETE]),
@@ -81,22 +81,22 @@
 		([Fuel quantity], [CHECK]),
 		([Mixture], [RICH (below 3000 feet)]),
 	)
-	#checklist("Climb", black,
+	#checklist("Climb", palette.light_blue,
 		([Airspeed], [70-90 KIAS]),
 		([Throttle], [FULL]),
 		([Mixture], [RICH (lean above 3000 feet)]),
 	)
-	#checklist("Cruise", black,
+	#checklist("Cruise", palette.dark_blue,
 		([Power], [2200-2700 RPM], [No more than 75% power]),
 		([Trim], [ADJUST]),
 		([Mixture], [LEAN (for max RPM)]),
 	)
-	#checklist("Descent", black,
+	#checklist("Descent", palette.light_green,
 		([Mixture], [RICH]),
 		([Power], [AS DESIRED]),
 		([Carburetor heat], [AS REQUIRED], [To prevent carburetor icing]),
 	)
-	#checklist("Before Landing", black,
+	#checklist("Before Landing", palette.brown,
 		([Fuel valve], [BOTH]),
 		([Mixture], [RICH]),
 		([Carburetor heat], [ON], [Apply full heat before closing throttle]),
@@ -104,14 +104,14 @@
 		([Flaps], [AS DESIRED]),
 		([Airspeed], [55-65 KIAS (flaps DOWN)]),
 	)
-	#checklist("Balked Landing", black,
+	#checklist("Balked Landing", palette.purple,
 		([Throttle], [FULL]),
 		([Carburetor heat], [COLD]),
 		([Flaps], [20°]),
 		([Airspeed], [55 KIAS]),
 		([Flaps], [RETRACT slowly]),
 	)
-	#checklist("After Landing", black,
+	#checklist("After Landing", palette.dark_green,
 		([Flaps], [UP]),
 		([Caburetor heat], [OFF]),
 		([Mixture], [GROUND LEAN]),
@@ -119,7 +119,7 @@
 	// POH Title: SECURING AIRPLANE. I split the checklist into two: the
 	// Shutdown checklist here and the Securing checklist on the ground
 	// checklist page.
-	#checklist("Shutdown", black,
+	#checklist("Shutdown", palette.black,
 		([Brakes], [SET]),
 		([Tach time], [RECORD]),
 		([Radios, electrical equipment], [OFF]),
@@ -133,7 +133,8 @@
 // Emergency Checklists (left side)
 // -----------------------------------------------------------------------------
 #let left_emergency_checklists = [
-	#checklist("Engine Failure During Takeoff Run", black, emergency: true,
+	#checklist("Engine Failure During Takeoff Run", palette.light_blue,
+		emergency: true,
 		([Throttle], [IDLE]),
 		([Brakes], [APPLY]),
 		([Flaps], [RETRACT]),
@@ -142,7 +143,8 @@
 	)
 	// The title in the POH is "ENGINE FAILURE IMMEDIATELY AFTER TAKEOFF" but
 	// that didn't fit on one line so immediately was replaced with shortly.
-	#checklist("Engine Failure Shortly After Takeoff", black, emergency: true,
+	#checklist("Engine Failure Shortly After Takeoff", palette.dark_blue,
+		emergency: true,
 		([Airspeed], align(right)[Flaps up: 65 KIAS\ Flaps down: 60 KIAS]),
 		([Mixture], [CUT-OFF]),
 		([Fuel valve], [OFF]),
@@ -150,7 +152,7 @@
 		([Flaps], [AS REQUIRED]),
 		([Master], [OFF]),
 	)
-	#checklist("Engine Failure During Flight", black, emergency: true,
+	#checklist("Engine Failure During Flight", palette.purple, emergency: true,
 		([Airspeed], [65 KIAS]),
 		([Carburetor heat], [ON]),
 		([Fuel valve], [BOTH]),
@@ -162,7 +164,8 @@
 	// line.
 	// Note: The Engine Fire in Flight checklist mentions this checklist by
 	// name; if the name is changed here it should be changed there as well.
-	#checklist("Forced Landing With Engine Failure", black, emergency: true,
+	#checklist("Forced Landing With Engine Failure", palette.light_green,
+		emergency: true,
 		([Airspeed], align(right)[Flaps up: 65 KIAS\ Flaps down: 60 KIAS]),
 		([Mixture], [CUT-OFF]),
 		([Fuel valve], [OFF]),
@@ -176,7 +179,7 @@
 	#colbreak()
 	// POH title: PRECAUTIONARY LANDING WITH ENGINE POWER. Removed "with engine
 	// power" to fit on one line.
-	#checklist("Precautionary Landing", black, emergency: true,
+	#checklist("Precautionary Landing", palette.dark_green, emergency: true,
 		([Flaps], [20°]),
 		([Airspeed], [60 KIAS]),
 		([Selected field], [FLY OVER], [Note terrain/obstructions.\ Retract
@@ -190,7 +193,7 @@
 		([Magnetos], [OFF]),
 		([Brakes], [APPLY HEAVILY]),
 	)
-	#checklist("Ditching", black, emergency: true,
+	#checklist("Ditching", palette.brown, emergency: true,
 		([Radio], [MAYDAY on 121.5 MHz], [Give location, intentions]),
 		([Heavy objects], [SECURE or JETTISON]),
 		([Flaps], [20°-40°]),
@@ -210,7 +213,8 @@
 // Emergency Checklists (right side)
 // -----------------------------------------------------------------------------
 #let right_emergency_checklists = [
-	#checklist("Engine Fire During Start On Ground", black, emergency: true,
+	#checklist("Engine Fire During Start On Ground", palette.light_green,
+		emergency: true,
 		([Cranking], [CONTINUE]),
 		([If engine starts:], []),
 		([#h(1em)Power], [1700 RPM for a few minutes]),
@@ -228,7 +232,7 @@
 		  If practical, try\ to remove air filter if it is ablaze.]),
 		([Both cases: inspect and repair damage before conducting another flight.], []),
 	)
-	#checklist("Engine Fire in Flight", black, emergency: true,
+	#checklist("Engine Fire in Flight", palette.purple, emergency: true,
 		([Mixture], [CUT-OFF]),
 		([Fuel valve], [OFF]),
 		([Master], [OFF]),
@@ -238,7 +242,7 @@
 		  which\ will provide an incombustible mixture]),
 		([Forced Landing With\ Engine Failure checklist], [EXECUTE]),
 	)
-	#checklist("Electrical Fire in Flight", black, emergency: true,
+	#checklist("Electrical Fire in Flight", palette.dark_blue, emergency: true,
 		([Master], [OFF]),
 		([All other switches (except magnetos)], [OFF]),
 		([Vents/cabin air/heat], [CLOSE]),
@@ -252,7 +256,7 @@
 		([#h(1em)Vents/cabin air/heat], [OPEN],
 		 [(when fire completely extinguished)]),
 	)
-	#checklist("Cabin Fire", black, emergency: true,
+	#checklist("Cabin Fire", palette.light_blue, emergency: true,
 		([Master], [OFF]),
 		([Vents/cabin air/heat], [CLOSED], [(to avoid drafts)]),
 		([Fire extinguisher], [USE],
@@ -260,13 +264,13 @@
 		  ventilate cabin]),
 		([Land ASAP, inspect for damage], []),
 	)
-	#checklist("Wing Fire", black, emergency: true,
+	#checklist("Wing Fire", palette.purple, emergency: true,
 		([Nav lights], [OFF]),
 		([Pitot heat], [OFF]),
 		([NOTE: Sideslip to keep flames away from fuel tanks and cabin.
 		  Land ASAP using flaps only as required.], []),
 	)
-	#checklist("Inadventent Icing Encounter", black, emergency: true,
+	#checklist("Inadvertent Icing Encounter", palette.light_blue, emergency: true,
 		([Pitot heat], [ON]),
 		([Turn back or change altitude to obtain an OAT less conducive to icing.], []),
 		([Cabin heat], [FULL ON]),
@@ -289,21 +293,21 @@
 	// POH title: STATIC SOURCE BLOCKAGE (Erroneous Instrument Reading
 	// Suspected). Removed "(Erroneous Instrument Reading Suspected)" to fit on
 	// one line.
-	#checklist("Static Source Blockage", black, emergency: true,
+	#checklist("Static Source Blockage", palette.dark_green, emergency: true,
 		([Alternate static source valve], [PULL ON]),
 		([Airspeed], [Use calibration table\ in POH section 5]),
 	)
-	#checklist("Landing With a Flat Main Tire", black, emergency: true,
+	#checklist("Landing With a Flat Main Tire", palette.brown, emergency: true,
 		([Approach], [NORMAL]),
 		([Touchdown], [GOOD TIRE FIRST], [Hold airplane off flat tire as long as possible]),
 	)
-	#checklist("Over-Voltage Light Illuminates", black, emergency: true,
+	#checklist("Over-Voltage Light Illuminates", palette.light_green, emergency: true,
 		([Master], [OFF (both sides)]),
 		([Master], [ON]),
 		([If over-voltage light illuminates again:], []),
 		([#h(1em)Flight], [TERMINATE ASAP]),
 	)
-	#checklist("Ammeter Shows Discharge", black, emergency: true,
+	#checklist("Ammeter Shows Discharge", palette.black, emergency: true,
 		([Alternator], [OFF]),
 		([Nonessential electrical equipment], [OFF]),
 		([Flight], [TERMINATE as soon as practical]),
@@ -314,7 +318,7 @@
 // Ground Checklists and Information page
 // -----------------------------------------------------------------------------
 #let ground_checklists_and_info = [
-	#checklist("Preflight", black,
+	#checklist("Preflight", palette.brown,
 		checklist_group("Fluids"),
 		([Magnetos], [OFF]),
 		([Fuel quantity], [CHECK VISUALLY]),
@@ -359,7 +363,7 @@
 		([Chocks], [REMOVE]),
 		([Tie-downs], [REMOVE]),
 	)
-	#checklist("Securing", black,
+	#checklist("Securing", palette.black,
 		([Control lock], [INSTALL]),
 		([Tie-downs, chocks], [APPLY]),
 		([Vents, windows], [CLOSE]),
@@ -368,7 +372,7 @@
 		([Flight Circle], [CHECK IN]),
 		([Doors], [LOCK]),
 	)
-	#container("Speeds", black, {
+	#container("Speeds", palette.purple, {
 		set par(leading: 0.3em)
 		table(
 			align: (left + horizon, center, center),
