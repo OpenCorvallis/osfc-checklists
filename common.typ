@@ -23,7 +23,7 @@
 	dark_green: rgb("6e7500"),
 	light_blue: rgb("009dad"),
 	light_green: green,
-	purple: rgb("7e009c"),
+	purple: rgb("8000a0"),
 )
 
 //------------------------------------------------------------------------------
