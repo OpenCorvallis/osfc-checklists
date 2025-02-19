@@ -133,7 +133,7 @@
 // Emergency Checklists (left side)
 // -----------------------------------------------------------------------------
 #let left_emergency_checklists = [
-	#checklist("Engine Failure During Takeoff Run", palette.light_blue,
+	#checklist("Engine Failure During Takeoff Run", palette.brown,
 		emergency: true,
 		([Throttle], [IDLE]),
 		([Brakes], [APPLY]),
@@ -193,7 +193,7 @@
 		([Magnetos], [OFF]),
 		([Brakes], [APPLY HEAVILY]),
 	)
-	#checklist("Ditching", palette.brown, emergency: true,
+	#checklist("Ditching", palette.light_blue, emergency: true,
 		([Radio], [MAYDAY on 121.5 MHz], [Give location, intentions]),
 		([Heavy objects], [SECURE or JETTISON]),
 		([Flaps], [20°-40°]),
@@ -264,7 +264,7 @@
 		  ventilate cabin]),
 		([Land ASAP, inspect for damage], []),
 	)
-	#checklist("Wing Fire", palette.purple, emergency: true,
+	#checklist("Wing Fire", palette.brown, emergency: true,
 		([Nav lights], [OFF]),
 		([Pitot heat], [OFF]),
 		([NOTE: Sideslip to keep flames away from fuel tanks and cabin.
