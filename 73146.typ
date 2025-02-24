@@ -317,7 +317,7 @@
 // -----------------------------------------------------------------------------
 // Ground Checklists and Information page
 // -----------------------------------------------------------------------------
-#let ground_checklists_and_info = [
+#let ground_checklists_and_info_columns = [
 	#checklist("Preflight", palette.brown,
 		checklist_group("Fluids"),
 		([Magnetos], [OFF]),
@@ -352,6 +352,8 @@
 		([Static source], [CHECK CLEAR]),
 		checklist_group("Left"),
 		([Main wheel tire], [CHECK INFLATION]),
+	)
+	#checklist("Preflight (continued)", palette.brown,
 		([Fuel tank vent], [CHECK CLEAR]),
 		([Pitot tube], [CHECK CLEAR]),
 		([Stall warning], [TEST]),
@@ -397,6 +399,50 @@
 	})
 ]
 
+#let light_gun_signals = container("Light Gun Signals", palette.light_green,
+	inset: false, {
+		let signal(color, width) = {
+			let width_unit = 1em
+			let height_unit = .7em
+			if color == none {
+				h(width * width_unit)
+			} else {
+				rect(fill: color, height: height_unit,
+					stroke: if color == white { .05em } else { none },
+					width: width * width_unit)
+			}
+		}
+		// I'm not sure where I got these color values from. Maybe I sampled
+		// them from the light gun signal table in the PHAK?
+		let green = rgb(5%, 69%, 29%)
+		let red = rgb(93%, 10%, 14%)
+		let solid(color) = signal(color, 5)
+		let blink(a, b) = stack(dir: ltr, signal(a, 1), signal(b, 1),
+			signal(a, 1), signal(b, 1), signal(a, 1))
+		set par(leading: 0.3em)
+		align(center, table(
+			align: (right + horizon, center + horizon, left + horizon),
+			columns: (1fr, auto, 1fr),
+			fill: (_, row) => (none, silver).at(calc.rem(row, 2)),
+			inset: .2em,
+			stroke: none,
+			[*Aircraft on the Ground*], [], [*Aircraft in Flight*],
+			table.hline(stroke: .05em + palette.light_green),
+			[Cleared for takeoff], solid(green), [Cleared to land],
+			[Cleared for taxi], blink(green, none), [Return for landing (to be
+				followed by steady green at the proper time)],
+			[STOP], solid(red),
+				[Give way to other aircraft and continue circling],
+			[Taxi clear of the runway in use], blink(red, none),
+				[Airport unsafe, do not land],
+			[Return to starting point on airport], blink(white, none),
+				[Not applicable],
+			[Exercise extreme caution], blink(green, red),
+				[Exercise extreme caution],
+		))
+	}
+)
+
 // -----------------------------------------------------------------------------
 // Page definitions and formatting
 // -----------------------------------------------------------------------------
@@ -411,11 +457,14 @@
 	#columns(2, gutter: 2*margins)[
 		#set text(heading_base_size)
 		= Ground Checklists and Information #h(1fr) N73146
-		#columns(2)[
-			#set text(8.5pt)
-			#ground_checklists_and_info
-		]
-		#v(1fr)
+		#{
+			set text(8.5pt)
+			columns(2)[
+				#ground_checklists_and_info_columns
+			]
+			light_gun_signals
+			v(1fr)
+		}
 		= Version 1 #h(1fr) #include "signature.typ"
 		#colbreak()
 		= Operating Checklists #h(1fr) N73146
