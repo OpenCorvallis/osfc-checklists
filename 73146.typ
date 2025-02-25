@@ -379,7 +379,7 @@
 		table(
 			align: (left + horizon, center, center),
 			columns: (auto, 1fr, auto),
-			fill: (_, row) => (none, silver).at(calc.rem(row, 2)),
+			fill: (_, row) => (none, palette.grey).at(calc.rem(row, 2)),
 			inset: (x: title_inset, y: .3em),
 			stroke: none,
 			[], [], [KIAS],
@@ -412,10 +412,6 @@
 					width: width * width_unit)
 			}
 		}
-		// I'm not sure where I got these color values from. Maybe I sampled
-		// them from the light gun signal table in the PHAK?
-		let green = rgb(5%, 69%, 29%)
-		let red = rgb(93%, 10%, 14%)
 		let solid(color) = signal(color, 5)
 		let blink(a, b) = stack(dir: ltr, signal(a, 1), signal(b, 1),
 			signal(a, 1), signal(b, 1), signal(a, 1))
@@ -423,21 +419,21 @@
 		align(center, table(
 			align: (right + horizon, center + horizon, left + horizon),
 			columns: (1fr, auto, 1fr),
-			fill: (_, row) => (none, silver).at(calc.rem(row, 2)),
+			fill: (_, row) => (none, palette.grey).at(calc.rem(row, 2)),
 			inset: .2em,
 			stroke: none,
 			[*Aircraft on the Ground*], [], [*Aircraft in Flight*],
 			table.hline(stroke: .05em + palette.light_green),
-			[Cleared for takeoff], solid(green), [Cleared to land],
-			[Cleared for taxi], blink(green, none), [Return for landing (to be
-				followed by steady green at the proper time)],
-			[STOP], solid(red),
+			[Cleared for takeoff], solid(palette.lg_green), [Cleared to land],
+			[Cleared for taxi], blink(palette.lg_green, none), [Return for
+				landing (to be followed by steady green at the proper time)],
+			[STOP], solid(palette.lg_red),
 				[Give way to other aircraft and continue circling],
-			[Taxi clear of the runway in use], blink(red, none),
+			[Taxi clear of the runway in use], blink(palette.lg_red, none),
 				[Airport unsafe, do not land],
 			[Return to starting point on airport], blink(white, none),
 				[Not applicable],
-			[Exercise extreme caution], blink(green, red),
+			[Exercise extreme caution], blink(palette.lg_green, palette.lg_red),
 				[Exercise extreme caution],
 		))
 	}
