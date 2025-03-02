@@ -20,10 +20,18 @@
 	black: black,
 	brown: rgb("653700"), // XKCD color survey brown
 	dark_blue: rgb("0043df"),
-	dark_green: rgb("6e7500"),
+	dark_green: rgb("6c7500"),
 	light_blue: rgb("009dad"),
 	light_green: green,
-	purple: rgb("8000a0"),
+	purple: rgb("8000a1"),
+
+	// This is the background color for the dark rows of the checklists. This is
+	// not to be used to color the checklist boxes themselves.
+	grey: luma(222),
+
+	// Colors used for the light gun signals portion of the checklist
+	lg_green: rgb("0db04a"),
+	lg_red: rgb("ee1a24"),
 )
 
 //------------------------------------------------------------------------------
@@ -154,7 +162,7 @@
 #let checklist(title, color, emergency: false, ..arguments) = {
 	let steps = arguments.pos();
 	let vars = (
-		bg_colors: (white, silver),
+		bg_colors: (white, palette.grey),
 		// Index of the current background color within `bg_colors`.
 		bg_idx: 0,
 		// The color of the checklist box.
