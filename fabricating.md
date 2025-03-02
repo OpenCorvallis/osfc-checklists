@@ -6,28 +6,36 @@ Center on 9th street in Corvallis.
 ## Overview of the fabricating process
 
 1. Print out the checklists, double-sided.
-1. Trim the paper edges.
+1. Trim the paper edges and cut down the middle.
 1. Laminate the checklist pages.
 1. As soon as the laminator stops, fold the paper over.
-1. Hold down on the crease for several seconds as the lamination cool.
+1. Hold down on the crease for several seconds as the lamination cools.
 1. For the multi-sheet checklists, bind the sheets together using a booklet
 stapler.
 
 ## Paper selection
 
-The printers are loaded with 20 lb paper. You can purchase higher weights from
-them (I know 32, 60, and 80 are available, I think there are others too). The
-printers can do double-sided printing on up to 80 lb paper, but anything higher
-than that must be printed one side at a time.
-
 Higher-weight paper is less transparent, which makes it easier to read under
-strong light conditions. However, higher-weight paper is more difficult to fold.
-Some experimentation showed that 80 lb paper is very difficult to fold, and it
-results in some amount of delamination during the folding process.
+strong light conditions. However, higher-weight paper is more difficult to
+laminate and fold.
 
-So far, it looks like 60 lb paper is the best fit: it is somewhat difficult to
-fold, but in the end it seems to work well and it is considerably more opaque
-than the 20 lb paper.
+The printers are loaded with 20 lb paper. You can purchase higher weights from
+them (I know 32, 60, and 80, and 100 are available, I think there are others
+too). The printers can do double-sided printing on up to 80 lb paper, but
+anything higher than that must be printed one side at a time. You can laminate
+up to 100 lb paper. If you print in 100 lb paper, use the "heavy 6" preset
+(heavy 6 and heavy 7 both support 100 lb paper, I asked them which to use).
+
+Cutting where the crease will be and separating the sheets makes the fold
+possible with heavier paper. Weirdly, it seems that having the sides closer
+together (shrinking the gap between the paper) works better?! I don't know for
+sure (haven't done enough testing). Maybe we don't even need a gap, just slice
+the paper and put the parts adjacent to each other?
+
+So far, I've gotten the best results with 80 pound paper. Print double-sided,
+then trim the edges and cut down the middle, then laminate. I think 100 pound
+paper can work, but I'll have to rotate every other page in the PDF to make the
+prints line up with single-sided printing.
 
 There are some special procedures for the higher-weight printer (both to
 convince it to feed the paper from the external feed slot, and to tell it that
@@ -40,9 +48,6 @@ in the page. So far, I've never seen it miss far enough to be a problem (my
 margins seem to be adequate), but it does look bad and leaves some of the
 margins very large. I use their straightedge cutter to trim off the extra space
 before laminating.
-
-Maybe I should try a different printer in the future (I used the one on the
-north wall closest to the west).
 
 ## Lamination technique
 
