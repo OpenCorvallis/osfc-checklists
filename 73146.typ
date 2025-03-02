@@ -183,7 +183,7 @@
 		([Flaps], [20°]),
 		([Airspeed], [60 KIAS]),
 		([Selected field], [FLY OVER], [Note terrain/obstructions.\ Retract
-			flaps upon reaching\ a safe altitude and airspeed.]),
+			flaps upon reaching a\ safe altitude and airspeed.]),
 		([Radios, electrical switches], [OFF]),
 		([Flaps], [40° (on final approach)]),
 		([Airspeed], [60 KIAS]),
@@ -196,7 +196,7 @@
 	#checklist("Ditching", palette.light_blue, emergency: true,
 		([Radio], [MAYDAY on 121.5 MHz], [Give location, intentions]),
 		([Heavy objects], [SECURE or JETTISON]),
-		([Flaps], [20°-40°]),
+		([Flaps], [20° - 40°]),
 		([Power], [300 FT/MIN DESCENT AT 55 KIAS],
 		 [If no power available, approach\ flaps up 65 KIAS or flaps 10° 60 KIAS]),
 		([Strong wind, heavy seas:\ #h(1em)LAND INTO WIND\
@@ -446,15 +446,16 @@
 #set text(fallback: false, font: "DejaVu Sans")
 
 #let heading_base_size = 10pt
-#let margins = 5mm
+#let margins = 4mm     // Margins around the outer edges of the printed sheet.
+#let crease_gap = 2mm  // Size of the gap that will be cut for the crease.
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	// page() supports multiple columns, but does not support setting the gutter
 	// width for multiple columns, so we call columns() ourselves instead.
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_base_size)
 		= Ground Checklists and Information #h(1fr) N73146
 		#{
-			set text(8.5pt)
+			set text(8.7pt)
 			columns(2)[
 				#ground_checklists_and_info_columns
 			]
@@ -471,13 +472,13 @@
 	]
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_base_size)
 		#box(fill: red, width: 100%,
 		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Forced Landings]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(8.5pt)
+			#set text(8.9pt)
 			#left_emergency_checklists
 		]
 		#colbreak()
@@ -485,7 +486,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Fires, Icing, Flat Tire, Electrical]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(7.6pt)
+			#set text(7.7pt)
 			#right_emergency_checklists
 		]
 	]

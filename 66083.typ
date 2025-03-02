@@ -515,13 +515,14 @@
 #set text(fallback: false, font: "DejaVu Sans")
 
 #let heading_size = 10pt
-#let margins = 5mm
+#let margins = 4mm     // Margins around the outer edges of the printed sheet.
+#let crease_gap = 2mm  // Size of the gap that will be cut for the crease.
 #page(flipped: true, margin: margins, paper: "us-letter")[
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_size)
 		= Ground Checklists #h(1fr) N66083
 		#columns(2)[
-			#set text(9.5pt)
+			#set text(9.7pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
@@ -535,7 +536,7 @@
 	]
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_size)
 		#box(fill: red, width: 100%,
 		     align(center, box(fill: white, outset: 1em)[= Engine Failures]))
@@ -555,7 +556,7 @@
 	]
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_size)
 		#box(fill: red, width: 100%,
 		     align(center, box(fill: white, outset: 1em)[= Electrical Malfunctions]))
@@ -575,13 +576,13 @@
 	]
 ]
 #page(flipped: true, margin: margins, paper: "us-letter")[
-	#columns(2, gutter: 2*margins)[
+	#columns(2, gutter: crease_gap)[
 		#set text(heading_size)
 		#box(fill: red, width: 100%,
 		     align(center, box(fill: white, outset: 1em)[= Fires]))
 		#v(-.5em)
 		#columns(2)[
-			#set text(9pt)
+			#set text(9.9pt)
 			#fires
 		]
 		#colbreak()
