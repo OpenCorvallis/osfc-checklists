@@ -20,14 +20,14 @@
 	black: black,
 	brown: rgb("653700"), // XKCD color survey brown
 	dark_blue: rgb("0043df"),
-	dark_green: rgb("6c7500"),
+	dark_green: rgb("6b7500"),
 	light_blue: rgb("009dad"),
 	light_green: green,
 	purple: rgb("8000a1"),
 
 	// This is the background color for the dark rows of the checklists. This is
 	// not to be used to color the checklist boxes themselves.
-	grey: luma(222),
+	grey: luma(221),
 
 	// Colors used for the light gun signals portion of the checklist
 	lg_green: rgb("0db04a"),
