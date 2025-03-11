@@ -59,15 +59,12 @@ jobs:
         run: |
           mkdir -p rendered_pr/build
           echo ${{ github.event.number }} > rendered_pr/pr_number
-          echo PR ${{ github.event.number }} > osfc-checklists/signature.typ
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083.pdf
-          typst compile osfc-checklists/66083.typ rendered_pr/build/66083_{n}.svg
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe.pdf
-          typst compile osfc-checklists/72pe.typ rendered_pr/build/72pe_{n}.svg
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146.pdf
-          typst compile osfc-checklists/73146.typ rendered_pr/build/73146_{n}.svg
           cd osfc-checklists
           git rev-parse HEAD > ../rendered_pr/git_ref
+          echo PR ${{ github.event.number }} > signature.typ
+          make -j4 normal svgs
+          cp *.pdf ../rendered_pr/build/
+          cp svgs/*.svg ../rendered_pr/build/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
