@@ -47,6 +47,7 @@
 		([Avionics], [ON]),
 		([Headset], [ON]),
 		([Flaps], [RETRACT]),
+		([Transponder], [VERIFY ALT]),
 		([Weather], [OBTAIN]),
 		([Altimeter], [SET]),
 		([EFB Setup], [AS DESIRED]),
@@ -54,7 +55,7 @@
 	)
 	#checklist("Run-up", palette.light_green,
 		([Instruments], [CHECK and SET]),
-		([VOR Check], [IF NEEDED]),
+		([VOR check], [IF NEEDED]),
 		([Brakes], [SET]),
 		([Doors and windows], [CLOSED, LOCKED]),
 		([Flight controls], [FREE and CORRECT]),
@@ -64,14 +65,14 @@
 		([Magnetos], [CHECK], [Max drop 125 RPM, max diff. 50 RPM]),
 		([Engine gauges, ammeter], [CHECK]),
 		([Vacuum gauge], [CHECK]),
+		([Gyroscopic instruments], [CHECK]),
 		([Carburetor heat], [TEST]),
 		([Idle], [TEST]),
 		([Mixture], [GROUND LEAN]),
 		([Throttle friction], [ADJUST]),
 	)
 	#checklist("Before Takeoff", palette.dark_green,
-		([Radios], [SET]),
-		([Instruments], [SET]),
+		([Radios, navigation, instruments], [SETUP]),
 		([Takeoff briefing], [COMPLETE]),
 		([Beacon, navigation, landing lights], [ON]),
 		([Carburetor heat], [AS REQUIRED]),
@@ -87,19 +88,19 @@
 		([Mixture], [RICH (lean above 3000 feet)]),
 	)
 	#checklist("Cruise", palette.dark_blue,
-		([Power], [2200-2700 RPM], [No more than 75% power]),
+		([Power], [2200-2700 RPM (≤75%)]),
 		([Trim], [ADJUST]),
 		([Mixture], [LEAN (for max RPM)]),
 	)
 	#checklist("Descent", palette.light_green,
 		([Mixture], [RICH]),
 		([Power], [AS DESIRED]),
-		([Carburetor heat], [AS REQUIRED], [To prevent carburetor icing]),
+		([Carburetor heat], [AS REQUIRED]),
 	)
 	#checklist("Before Landing", palette.brown,
 		([Fuel valve], [BOTH]),
 		([Mixture], [RICH]),
-		([Carburetor heat], [ON], [Apply full heat before closing throttle]),
+		([Carburetor heat], [ON]),
 		([Airspeed], [60-70 KIAS (flaps UP)]),
 		([Flaps], [AS DESIRED]),
 		([Airspeed], [55-65 KIAS (flaps DOWN)]),
@@ -299,7 +300,8 @@
 	)
 	#checklist("Landing With a Flat Main Tire", palette.brown, emergency: true,
 		([Approach], [NORMAL]),
-		([Touchdown], [GOOD TIRE FIRST], [Hold airplane off flat tire as long as possible]),
+		// "hold airplane off flat tire" reworded to fit
+		([Touchdown], [GOOD TIRE FIRST], [Hold flat tire off ground as long as possible]),
 	)
 	#checklist("Over-Voltage Light Illuminates", palette.light_green, emergency: true,
 		([Master], [OFF (both sides)]),
@@ -323,7 +325,7 @@
 		([Magnetos], [OFF]),
 		([Fuel quantity], [CHECK VISUALLY]),
 		([Fuel sumps], [DRAIN],
-		 [Left wing, right wing, fuel strainer.\ Inspect for contamination.]),
+		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
 		([Fuel filler caps], [SECURE]),
 		([Engine oil level], [CHECK], [Minimum 6 quarts]),
 		checklist_group("Cabin"),
@@ -445,7 +447,7 @@
 
 #set text(fallback: false, font: "DejaVu Sans")
 
-#let heading_base_size = 10pt
+#let heading_base_size = 8pt
 #let margins = 5mm
 #page(flipped: true, margin: margins, paper: "us-letter")[
 	// page() supports multiple columns, but does not support setting the gutter
@@ -454,7 +456,7 @@
 		#set text(heading_base_size)
 		= Ground Checklists and Information #h(1fr) N73146
 		#{
-			set text(8.5pt)
+			set text(8.6pt)
 			columns(2)[
 				#ground_checklists_and_info_columns
 			]
@@ -465,7 +467,7 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N73146
 		#columns(2)[
-			#set text(7.5pt)
+			#set text(8.1pt)
 			#operating_checklists
 		]
 	]
@@ -485,7 +487,7 @@
 		     align(center, box(fill: white, outset: 1em)[= Fires, Icing, Flat Tire, Electrical]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
-			#set text(7.6pt)
+			#set text(7.7pt)
 			#right_emergency_checklists
 		]
 	]
