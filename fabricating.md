@@ -3,6 +3,22 @@
 The checklists are printed and laminated at the FedEx Office Print and Ship
 Center on 9th street in Corvallis.
 
+## Possible future changes
+
+The below process was tested and works in practice. However, the print shop
+informed me that the printer they have behind the counter can do double-sided
+printing on 100lb paper. I plan to try that the next time I make the checklists.
+They gave me a couple pieces of advice:
+
+1. Submit the print job online (through FedEx's website) to avoid extra fees.
+1. The website will indicate a 3-5 hour turnaround, you can ignore that. The
+turnaround is actually 10-15 minutes. It sounds like that's the computer system
+delay, and they'll actually print it when you arrive (I'm not 100% sure though).
+
+Oh, and the shop said they will be getting new printers in a new month. They
+won't be less capable but they're not sure if the new printers will be more
+capable.
+
 ## Overview of the fabricating process
 
 1. Print out the checklists, double-sided.
@@ -45,7 +61,7 @@ slot and to tell it the weight of the paper (ask employees for help if unsure).
 To print on 100 lb paper, use the "Heavy 6" preset (heavy 6 and heavy 7 both
 support 100 lb paper, I asked them which to use).
 
-For now, I am using 100 lb paper. If the lamination's longevity becomes an
+For now, I am using 100 lb matte paper. If the lamination's longevity becomes an
 issue, then we should reduce to a lighter weight paper (80 pounds or less). In
 that case, we should remove the code that generates the "print shop" PDF files
 and use the printers' automatic double-sided printing, as that is easier and
