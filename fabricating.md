@@ -15,7 +15,7 @@ They gave me a couple pieces of advice:
 turnaround is actually 10-15 minutes. It sounds like that's the computer system
 delay, and they'll actually print it when you arrive (I'm not 100% sure though).
 
-Oh, and the shop said they will be getting new printers in a new month. They
+Oh, and the shop said they will be getting new printers in a few months. They
 won't be less capable but they're not sure if the new printers will be more
 capable.
 
