@@ -148,11 +148,13 @@
 	// The outer rectangle provides the outline around the checklist as well as
 	// the background fill for the title portion. The inner rectangle provides a
 	// solid white background, and insets the contents to match the title inset.
-	rect(fill: color, inset: edge_width, radius: outer_radius, stack(
-		box(inset: title_inset, text(fill: white, weight: "bold", title)),
-		rect(fill: white, inset: rect_inset, radius: (bottom: inner_radius),
-			width: 100%, content)
-	))
+	rect(fill: color, inset: (top: 0em, rest: edge_width), radius: outer_radius,
+		stack(
+			box(inset: title_inset, text(fill: white, weight: "bold", title)),
+			rect(fill: white, inset: rect_inset, radius: (bottom: inner_radius),
+				width: 100%, content)
+		)
+	)
 }
 
 //------------------------------------------------------------------------------
