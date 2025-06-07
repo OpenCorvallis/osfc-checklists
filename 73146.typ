@@ -208,6 +208,13 @@
 		([Airplane], [EVACUATE]),
 		([Life vests/raft], [INFLATE]),
 	)
+	#checklist("Landing Without Elevator Control", palette.black,
+		emergency: true,
+		([Trim], [FOR LEVEL FLIGHT], [at 60 KIAS, flaps 20°]),
+		([Approach], [Control glide angle using\ power, do not change trim.]),
+		([Flare], [USE NOSE-UP TRIM & POWER]),
+		([Touchdown], [THROTTLE IDLE]),
+	)
 ]
 
 // -----------------------------------------------------------------------------
@@ -476,7 +483,7 @@
 	#columns(2, gutter: 2*margins)[
 		#set text(heading_base_size)
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Forced Landings]))
+		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Abnormal Landings]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
 			#set text(8.5pt)
