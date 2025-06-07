@@ -426,29 +426,27 @@
 // -----------------------------------------------------------------------------
 #let ground_checklists_and_info = [
 	#checklist("Preflight", palette.brown,
-		checklist_group("Fluids"),
+		checklist_group("Fuel"),
 		([Brakes], [AS NEEDED]),
 		([Magnetos], [OFF]),
 		([Fuel quantity], [CHECK VISUALLY]),
 		([Fuel sumps], [DRAIN], [5 on each wing, 3 on bottom. Inspect for
 			contamination.]),
 		([Fuel filler caps], [SECURE]),
-		([Engine oil level], [CHECK], [Minimum 5 quarts]),
-		([Dipstick], [SECURE]),
 		checklist_group("Cabin"),
 		([Pitot cover], [REMOVE]),
-		([POH], [ACCESSIBLE]),
+		([ARROW Documents], [VERIFY]),
 		([G1000 reference], [ACCESSIBLE]),
 		([Avionics (BUS 1 and BUS 2)], [OFF]),
-		([Master], [ON], [When the master switch is on, treat propeller as if
+		([Master], [ON], [When the master switch is on,\ treat propeller as if
 			magnetos are on. Do not stand in propeller arc.]),
 		([PFD], [VERIFY ON]),
 		([Fuel gauges], [CHECK QUANTITY]),
 		([LOW FUEL], [VERIFY NOT SHOWN]),
 		([OIL PRESSURE], [VERIFY SHOWN]),
 		([LOW VACUUM], [VERIFY SHOWN]),
-		([Avionics fans], [CHECK], [Avionics bus 1 ON, verify fan\ heard,
-			bus 1 OFF. Avionics bus 2\ ON, verify fan heard, bus 2 OFF.]),
+		([Avionics fans], [CHECK], [Avionics bus 1 ON, verify fan heard,
+			bus 1 OFF. Avionics bus 2 ON, verify fan heard, bus 2 OFF.]),
 		([Lights], [CHECK]),
 		([Flaps], [EXTEND]),
 		([Tach time], [RECORD]),
@@ -461,19 +459,21 @@
 		([Alt static air], [OFF]),
 		([Fire extinguisher], [CHECK]),
 		([Control lock ], [REMOVE]),
-	)
-	#checklist("Preflight (continued)", palette.brown,
 		checklist_group("Empennage"),
 		([Autopilot static], [VERIFY CLEAR]),
 		([Rudder gust lock], [REMOVE]),
 		([Control surfaces], [CHECK], [Freedom of movement, security]),
 		([Trim tab], [CHECK SECURE]),
 		([Antennas], [CHECK CONDITION]),
+	)
+	#checklist("Preflight (continued)", palette.brown,
 		checklist_group("Right"),
 		([Flap], [CHECK SECURE, CONDITION]),
 		([Aileron], [CHECK FREE, SECURE]),
 		([Main wheel tire], [CHECK INFLATION]),
 		checklist_group("Nose"),
+		([Engine oil level], [CHECK], [Minimum 5 quarts]),
+		([Dipstick], [SECURE]),
 		([Cooling inlets], [VERIFY CLEAR]),
 		([Propeller], [CHECK FOR NICKS]),
 		([Spinner], [VERIFY SECURE]),
@@ -521,7 +521,7 @@
 		#set text(heading_base_size)
 		= Ground Checklists #h(1fr) N66083
 		#columns(2)[
-			#set text(9.5pt)
+			#set text(9.3pt)
 			#ground_checklists_and_info
 		]
 		#v(1fr)
