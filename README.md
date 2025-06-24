@@ -25,7 +25,6 @@ echo '<your name>' > signature.typ
 Once you have a working `typst` command, you can build the documents by running:
 
 ```
-typst compile 66083.typ
 typst compile 72pe.typ
 typst compile 73146.typ
 ```

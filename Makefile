@@ -32,7 +32,7 @@
 
 # This should be the only thing that needs to change if a checklist is added or
 # removed.
-planes ::= 66083 72pe 73146
+planes ::= 72pe 73146
 
 # Paths to the normal PDF files.
 normal_pdfs ::= $(foreach plane,$(planes),$(plane).pdf)
