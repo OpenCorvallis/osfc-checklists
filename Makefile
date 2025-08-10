@@ -60,7 +60,7 @@ clean:
 		$(foreach plane,$(planes),$(plane).pdf svgs/$(plane)_*.svg) \
 		print_shop/ svgs/
 
-$(normal_pdfs): %.pdf: %.typ
+$(normal_pdfs): %.pdf: %.typ common.typ signature.typ
 	typst compile $<
 
 print_shop_dir:
@@ -75,6 +75,6 @@ svgs_dir:
 	mkdir -p svgs
 
 .PHONY: $(svg_targets)
-$(svg_targets): svgs/%: %.typ | svgs_dir
+$(svg_targets): svgs/%: %.typ common.typ signature.typ | svgs_dir
 	rm -f svgs/$*_*.svg
 	typst compile $< svgs/$*_{p}.svg
