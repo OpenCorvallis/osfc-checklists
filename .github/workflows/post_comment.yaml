@@ -80,12 +80,7 @@ jobs:
         env:
           BODY: >
             Generated PDFs:
-            [72PE](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/72pe.pdf)
             [73146](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73146.pdf)
-            <details><summary>72PE</summary>
-            ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/72pe_1.svg)
-            ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/72pe_2.svg)
-            </details>
             <details><summary>73146</summary>
             ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_1.svg)
             ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_2.svg)
