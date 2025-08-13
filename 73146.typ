@@ -114,7 +114,7 @@
 	)
 	#checklist("After Landing", palette.dark_green,
 		([Flaps], [UP]),
-		([Caburetor heat], [OFF]),
+		([Carburetor heat], [OFF]),
 		([Mixture], [GROUND LEAN]),
 	)
 	// POH Title: SECURING AIRPLANE. I split the checklist into two: the
