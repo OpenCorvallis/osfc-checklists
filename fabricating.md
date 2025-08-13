@@ -26,7 +26,6 @@ capable.
 1. Laminate the checklist pages.
 1. As soon as the laminator stops, fold it.
 1. Place a heavy book on top while the lamination cools.
-1. For the multi-sheet checklists, bind the sheets together using a booklet
 stapler.
 
 ## Paper selection
@@ -93,12 +92,3 @@ make the crease happen in the correct place: it will automatically crease at the
 1mm gap between the pages (and there's no opportunity to align the corners
 during the folding process). Then place a heavy book on top while the lamination
 cools.
-
-## Binding technique
-
-Get some practice on non-laminated paper before using a booklet stapler, as it
-is easy to miss the center of the spine (there's no marking on the staplers I've
-seen that show exactly were the staple will come out).
-
-I start in the center of the spine, then move towards one side. I then reset
-back towards the center and work towards the other side.
