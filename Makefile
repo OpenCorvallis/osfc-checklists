@@ -12,20 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This Makefile produces three sets of output files:
+# This Makefile produces two sets of output files:
 #
 #   1. The "normal" PDF files.
-#   2. The "print shop" PDF files.
-#   3. SVG images of each page.
+#   2. SVG images of each page.
 #
 # The normal PDF files are produced by `typst compile <file>`. Use these for
-# manual review and printing at home. This Makefile keeps them in the position
-# that Typst puts them by default (next to the .typ files) so that you can
-# easily mix `make` invocations with manual `typst compile` commands.
-#
-# The print shop PDF files are put into a print_shop/ directory. These files
-# have every even page rotated 180 degrees. This minimizes misalignment during
-# manual double-sided printing (see fabricating.md for more information).
+# manual review and printing. This Makefile keeps them in the position that
+# Typst puts them by default (next to the .typ files) so that you can easily
+# mix `make` invocations with manual `typst compile` commands.
 #
 # The SVG images are placed in the svgs/ directory. There are used by the Post
 # Comment workflow to embed images into PR comments.
@@ -37,9 +32,6 @@ planes ::= 73146
 # Paths to the normal PDF files.
 normal_pdfs ::= $(foreach plane,$(planes),$(plane).pdf)
 
-# Paths to the print shop PDF files.
-print_shop_pdfs ::= $(foreach plane,$(planes),print_shop/$(plane).pdf)
-
 # The number of SVGs generated varies from checklist to checklist. Rather than
 # telling make exactly which SVGs are generated for each airplane (which would
 # have to be hardcoded and updated manually), we just have one phony target to
@@ -48,28 +40,17 @@ print_shop_pdfs ::= $(foreach plane,$(planes),print_shop/$(plane).pdf)
 svg_targets ::= $(foreach plane,$(planes),svgs/$(plane))
 
 # Meta targets that build collections of other targets
-.PHONY: all normal print_shop svgs
-all: normal print_shop svgs
+.PHONY: all normal svgs
+all: normal svgs
 normal: $(normal_pdfs)
-print_shop: $(print_shop_pdfs)
 svgs: $(svg_targets)
 
 .PHONY: clean
 clean:
-	rm -df $(print_shop_pdfs) \
-		$(foreach plane,$(planes),$(plane).pdf svgs/$(plane)_*.svg) \
-		print_shop/ svgs/
+	rm -df $(foreach plane,$(planes),$(plane).pdf svgs/$(plane)_*.svg) svgs/
 
 $(normal_pdfs): %.pdf: %.typ common.typ signature.typ
 	typst compile $<
-
-print_shop_dir:
-	mkdir -p print_shop
-
-# qpdf was chosen because it can rotate pages without re-encoding the page (it
-# should only touch the page angle metadata), thereby avoiding quality loss.
-$(print_shop_pdfs): print_shop/%.pdf: %.pdf | print_shop_dir
-	qpdf --rotate=+180:1-z:even $*.pdf $@
 
 svgs_dir:
 	mkdir -p svgs
