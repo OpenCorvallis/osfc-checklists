@@ -81,11 +81,11 @@ jobs:
           BODY: >
             Generated PDFs:
             [73063](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73063.pdf)
+            [73146](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73146.pdf)
             <details><summary>73063</summary>
             ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73063_1.svg)
             ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73063_2.svg)
             </details>
-            [73146](https://github.com/${{github.repository}}/blob/${{steps.push.outputs.hash}}/build/73146.pdf)
             <details><summary>73146</summary>
             ![Outside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_1.svg)
             ![Inside](https://raw.githubusercontent.com/${{github.repository}}/${{steps.push.outputs.hash}}/build/73146_2.svg)
