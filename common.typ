@@ -27,7 +27,7 @@
 
 	// This is the background color for the dark rows of the checklists. This is
 	// not to be used to color the checklist boxes themselves.
-	grey: luma(223),
+	grey: luma(224),
 
 	// Colors used for the light gun signals portion of the checklist
 	lg_green: rgb("0db04a"),
