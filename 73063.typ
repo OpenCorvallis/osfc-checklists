@@ -30,9 +30,9 @@
 		([Brakes], [TEST and SET]),
 		([Seats, belts, harnesses], [SECURE]),
 		([Fuel valve], [BOTH]),
-		([Radios, electrical equipment], [OFF]),
+		([Radios, autopilot, electric devices], [OFF]),
 		([Circuit breakers], [CHECK IN]),
-		([Beacon switch], [ON]),
+		([Strobe, beacon lights], [ON]),
 		checklist_group("Engine Start"),
 		([Mixture], [RICH]),
 		([Carburetor heat], [COLD]),
@@ -59,6 +59,7 @@
 		([Brakes], [SET]),
 		([Doors and windows], [CLOSED, LOCKED]),
 		([Flight controls], [FREE and CORRECT]),
+		([Autopilot], [TEST DISCONNECT]),
 		([Fuel valve], [BOTH]),
 		([Mixture], [RICH (below 3000 feet)]),
 		([Throttle], [1700 RPM]),
@@ -74,7 +75,7 @@
 	#checklist("Before Takeoff", palette.dark_green,
 		([Radios, navigation, instruments], [SETUP]),
 		([Takeoff briefing], [COMPLETE]),
-		([Beacon, navigation, landing lights], [ON]),
+		([Beacon, nav, strobe, landing lights], [ON]),
 		([Carburetor heat], [AS REQUIRED]),
 		([Flaps], [0-10°]),
 		([Trim], [TAKEOFF]),
@@ -122,8 +123,7 @@
 	// checklist page.
 	#checklist("Shutdown", palette.black,
 		([Brakes], [SET]),
-		([Tach time], [RECORD]),
-		([Radios, electrical equipment], [OFF]),
+		([Radios, electric devices, autopilot], [OFF]),
 		([Mixture], [CUT-OFF]),
 		([Magnetos], [OFF]),
 		([Master], [OFF]),
@@ -176,6 +176,15 @@
 		([Doors], [UNLATCH BEFORE TOUCHDOWN]), // "prior to" -> "before" for space
 		([Touchdown], [SLIGHTLY TAIL LOW]),
 		([Brakes], [APPLY HEAVILY]),
+	)
+	// From the GFC 500 AFMS.
+	#checklist("Autopilot Malfunction", palette.brown, emergency: true,
+		([Control wheel], [GRIP FIRMLY]),
+		([AP DISC button], [PRESS AND HOLD]),
+		([Aircraft attitude], [MAINTAIN]),
+		([Trim], [RE-TRIM]),
+		([Autopilot circuit breaker], [PULL]),
+		([AP DISC button], [RELEASE]),
 	)
 	#colbreak()
 	// POH title: PRECAUTIONARY LANDING WITH ENGINE POWER. Removed "with engine
@@ -273,7 +282,7 @@
 		([Land ASAP, inspect for damage], []),
 	)
 	#checklist("Wing Fire", palette.brown, emergency: true,
-		([Nav lights], [OFF]),
+		([Nav, strobe lights], [OFF]),
 		([Pitot heat], [OFF]),
 		([NOTE: Sideslip to keep flames away from fuel tanks and cabin.
 		  Land ASAP using flaps only as required.], []),
@@ -335,13 +344,12 @@
 		 [Left wing, right wing, fuel strainer. Inspect for contamination.]),
 		([Fuel filler caps], [SECURE]),
 		checklist_group("Cabin"),
-		([Pitot cover], [REMOVE]),
+		([AoA, pitot covers], [REMOVE]),
 		([ARROW Documents], [VERIFY]),
 		([Master], [ON]),
 		([Flaps], [EXTEND]),
 		([Fuel gauges], [CHECK QUANTITY]),
 		([Lights], [CHECK]),
-		([Tach time], [RECORD]),
 		([Pitot heat], [TEST]),
 		([Master], [OFF]),
 		([Fire extinguisher], [SECURE]),
@@ -362,9 +370,10 @@
 		checklist_group("Left"),
 		([Main wheel tire], [CHECK INFLATION]),
 	)
+	#colbreak()
 	#checklist("Preflight (continued)", palette.brown,
 		([Fuel tank vent], [CHECK CLEAR]),
-		([Pitot tube], [CHECK CLEAR]),
+		([AoA, pitot tubes], [CHECK CLEAR]),
 		([Stall warning], [TEST]),
 		([Aileron], [CHECK], [Freedom of movement and security]),
 		checklist_group("Final"),
@@ -378,7 +387,7 @@
 		([Control lock], [INSTALL]),
 		([Tie-downs, chocks], [APPLY]),
 		([Vents, windows], [CLOSE]),
-		([Pitot cover], [APPLY]),
+		([AoA, pitot covers], [APPLY]),
 		([Tach, Hobbs times], [RECORD]),
 		([Flight Circle], [CHECK IN]),
 		([Doors], [LOCK]),
@@ -461,7 +470,7 @@
 	// width for multiple columns, so we call columns() ourselves instead.
 	#columns(2, gutter: 2*margins)[
 		#set text(heading_base_size)
-		= Ground Checklists and Information #h(1fr) N73146
+		= Ground Checklists and Information #h(1fr) N73063
 		#{
 			set text(8.6pt)
 			columns(2)[
@@ -472,9 +481,9 @@
 		}
 		= Version 1 #h(1fr) #include "signature.typ"
 		#colbreak()
-		= Operating Checklists #h(1fr) N73146
+		= Operating Checklists #h(1fr) N73063
 		#columns(2)[
-			#set text(8.1pt)
+			#set text(8.3pt)
 			#operating_checklists
 		]
 	]
@@ -483,7 +492,7 @@
 	#columns(2, gutter: 2*margins)[
 		#set text(heading_base_size)
 		#box(fill: red, width: 100%,
-		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Abnormal Landings]))
+		     align(center, box(fill: white, outset: 1em)[= Engine Failures, Autopilot, Abnormal Landings]))
 		#v(-.5em)
 		#columns(2, gutter: 2mm)[
 			#set text(8.5pt)
