@@ -122,6 +122,7 @@
 	// checklist page.
 	#checklist("Shutdown", palette.black,
 		([Brakes], [SET]),
+		([Tach, Hobbs times], [RECORD]),
 		([Radios, electric devices, autopilot], [OFF]),
 		([Mixture], [CUT-OFF]),
 		([Magnetos], [OFF]),
@@ -349,6 +350,7 @@
 		([Flaps], [EXTEND]),
 		([Fuel gauges], [CHECK QUANTITY]),
 		([Lights], [CHECK]),
+		([Tach, Hobbs times], [RECORD]),
 		([Pitot heat], [TEST]),
 		([Master], [OFF]),
 		([Fire extinguisher], [SECURE]),
@@ -369,7 +371,6 @@
 		checklist_group("Left"),
 		([Main wheel tire], [CHECK INFLATION]),
 	)
-	#colbreak()
 	#checklist("Preflight (continued)", palette.brown,
 		([Fuel tank vent], [CHECK CLEAR]),
 		([AoA, pitot tubes], [CHECK CLEAR]),
@@ -482,7 +483,7 @@
 		#colbreak()
 		= Operating Checklists #h(1fr) N73063
 		#columns(2)[
-			#set text(8.3pt)
+			#set text(8.1pt)
 			#operating_checklists
 		]
 	]
