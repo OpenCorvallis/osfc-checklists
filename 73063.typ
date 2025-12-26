@@ -479,7 +479,7 @@
 			light_gun_signals
 			v(1fr)
 		}
-		= Version 1 #h(1fr) #include "signature.typ"
+		= Version 2 #h(1fr) #include "signature.typ"
 		#colbreak()
 		= Operating Checklists #h(1fr) N73063
 		#columns(2)[
