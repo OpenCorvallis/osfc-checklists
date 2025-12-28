@@ -65,7 +65,7 @@
 		([Mixture], [RICH (below 3000 feet)]),
 		([Throttle], [1700 RPM]),
 		([Magnetos], [CHECK], [Max drop 125 RPM, max diff. 50 RPM]),
-		([Engine gauges, ammeter], [CHECK]),
+		([Engine gauges, volts], [CHECK]),
 		([Carburetor heat], [TEST]),
 		([Idle], [TEST]),
 		([Mixture], [GROUND LEAN]),
@@ -325,7 +325,7 @@
 		([If over-voltage light illuminates again:], []),
 		([#h(1em)Flight], [TERMINATE ASAP]),
 	)
-	#checklist("Ammeter Shows Discharge", palette.black, emergency: true,
+	#checklist("Low Voltage", palette.black, emergency: true,
 		([Alternator], [OFF]),
 		([Nonessential electrical equipment], [OFF]),
 		([Flight], [TERMINATE as soon as practical]),
