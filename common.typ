@@ -22,12 +22,12 @@
 	dark_blue: rgb("0043df"),
 	dark_green: rgb("6a7500"),
 	light_blue: rgb("009dad"),
-	light_green: green,
+	light_green: rgb("2ecb40"),
 	purple: rgb("8000a2"),
 
 	// This is the background color for the dark rows of the checklists. This is
 	// not to be used to color the checklist boxes themselves.
-	grey: luma(224),
+	grey: luma(225),
 
 	// Colors used for the light gun signals portion of the checklist
 	lg_green: rgb("0db04a"),
